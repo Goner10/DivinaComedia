@@ -5,306 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La Divina Comedia - Carta</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Righteous';
-            line-height: 1.6;
-            color: #0F0E0E;
-            background-color: #fff;
-        }
-
-        /* Header */
-        .header {
-            background-color: #876445;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .logo {
-            color: #EEC373;
-            font-size: 18px;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        .menu-btn, .reservar-btn {
-            background-color: #EEC373;
-            color: #0F0E0E;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 4px;
-            font-weight: bold;
-            cursor: pointer;
-            text-decoration: none;
-            font-size: 14px;
-        }
-
-        .menu-btn {
-            background-color: transparent;
-            color: #EEC373;
-            border: 2px solid #EEC373;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(15, 14, 14, 0.4), rgba(15, 14, 14, 0.4)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23876445"/><circle cx="20" cy="20" r="2" fill="%23EEC373" opacity="0.3"/><circle cx="80" cy="30" r="1.5" fill="%23EEC373" opacity="0.2"/><circle cx="50" cy="70" r="1" fill="%23EEC373" opacity="0.4"/></svg>');
-            background-size: cover;
-            background-position: center;
-            padding: 60px 20px;
-            text-align: center;
-            color: #EEC373;
-        }
-
-        .hero h1 {
-            font-size: 28px;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .hero h1:before,
-        .hero h1:after {
-            content: '';
-            width: 60px;
-            height: 2px;
-            background-color: #EEC373;
-        }
-
-        .hero p {
-            font-size: 16px;
-            margin-top: 10px;
-            opacity: 0.9;
-        }
-
-        /* Category Navigation */
-        .category-nav {
-            background-color: #fff;
-            padding: 15px 0;
-            overflow-x: auto;
-            white-space: nowrap;
-            border-bottom: 2px solid #F4DFBA;
-            position: sticky;
-            top: 70px;
-            z-index: 90;
-        }
-
-        .category-nav::-webkit-scrollbar {
-            height: 4px;
-        }
-
-        .category-nav::-webkit-scrollbar-track {
-            background: #F4DFBA;
-        }
-
-        .category-nav::-webkit-scrollbar-thumb {
-            background: #EEC373;
-            border-radius: 2px;
-        }
-
-        .category-pills {
-            display: flex;
-            gap: 10px;
-            padding: 0 20px;
-        }
-
-        .category-pill {
-            background-color: #F4DFBA;
-            color: #0F0E0E;
-            padding: 8px 16px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            white-space: nowrap;
-            transition: all 0.3s ease;
-        }
-
-        .category-pill.active,
-        .category-pill:hover {
-            background-color: #EEC373;
-            color: #0F0E0E;
-        }
-
-        /* Menu Sections */
-        .menu-section {
-            padding: 40px 20px;
-        }
-
-        .section-title {
-            font-size: 24px;
-            text-align: center;
-            margin-bottom: 30px;
-            color: #0F0E0E;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .section-title:before,
-        .section-title:after {
-            content: '';
-            width: 60px;
-            height: 2px;
-            background-color: #EEC373;
-        }
-
-        .menu-items {
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .menu-item {
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #F4DFBA;
-        }
-
-        .menu-item:last-child {
-            border-bottom: none;
-        }
-
-        .item-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 5px;
-        }
-
-        .item-name {
-            font-size: 16px;
-            font-weight: bold;
-            color: #0F0E0E;
-            flex: 1;
-            margin-right: 10px;
-        }
-
-        .item-price {
-            font-size: 16px;
-            font-weight: bold;
-            color: #EEC373;
-            white-space: nowrap;
-        }
-
-        .item-description {
-            font-size: 14px;
-            color: #876445;
-            margin-top: 5px;
-            line-height: 1.4;
-        }
-
-        .item-allergens {
-            font-size: 12px;
-            color: #CA965C;
-            margin-top: 5px;
-            font-style: italic;
-        }
-
-        .vegan-icon {
-            color: #4CAF50;
-            font-size: 12px;
-            margin-left: 5px;
-        }
-
-        /* Featured Items */
-        .featured-item {
-            background-color: #F4DFBA;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-
-        .featured-item .item-name {
-            color: #0F0E0E;
-            font-size: 18px;
-        }
-
-        /* Paella Special Section */
-        .paella-note {
-            background-color: #EEC373;
-            color: #0F0E0E;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            text-align: center;
-            font-weight: bold;
-        }
-
-        /* Footer */
-        .footer {
-            background-color: #0F0E0E;
-            color: #EEC373;
-            padding: 30px 20px;
-            text-align: center;
-        }
-
-        .footer h3 {
-            font-size: 18px;
-            margin-bottom: 15px;
-        }
-
-        .footer p {
-            font-size: 14px;
-            margin-bottom: 10px;
-        }
-
-        .social-icons {
-            margin-top: 20px;
-        }
-
-        .social-icons a {
-            color: #EEC373;
-            font-size: 24px;
-            margin: 0 10px;
-            text-decoration: none;
-        }
-
-        /* Responsive */
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 24px;
-            }
-            
-            .hero h1:before,
-            .hero h1:after {
-                width: 40px;
-            }
-            
-            .section-title {
-                font-size: 20px;
-            }
-            
-            .section-title:before,
-            .section-title:after {
-                width: 40px;
-            }
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+   
 </head>
 <body>
     <!-- Header -->
     <header class="header">
-        <a href="#" class="logo">La Divina Comedia</a>
-        <div>
-            <button class="menu-btn">☰</button>
-            <a href="#" class="reservar-btn">RESERVAR</a>
-        </div>
-    </header>
+    <a href="index.html" class="header__logo">
+      <img src="/img/la_divina_comedia_dorado.png" alt="La Divina Comedia" class="logo-img">
+    </a>
+
+    <div class="header__actions">
+      <button class="menu-btn" aria-label="Abrir menú">☰</button>
+      <a href="#reservas" class="reservar-btn">RESERVAR</a>
+    </div>
+  </header>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -316,9 +33,13 @@
     <nav class="category-nav">
         <div class="category-pills">
             <a href="#tapas" class="category-pill active">Tapas</a>
-            <a href="#entrantes" class="category-pill">Entrantes</a>
+            <a href="#entrantes-calientes" class="category-pill">Entrantes</a>
+            <a href="#vegano-vegetariano" class="category-pill">Vegano / Vegetariano</a>
             <a href="#ensaladas" class="category-pill">Ensaladas</a>
+            <a href="#frituras" class="category-pill">Frituras</a>
             <a href="#paellas" class="category-pill">Paellas</a>
+            <a href="#risottos" class="category-pill">Risotti</a>
+            <a href="#melosos-arroz" class="category-pill">Melosos de Arroz</a>
             <a href="#carnes" class="category-pill">Carnes</a>
             <a href="#pescados" class="category-pill">Pescados</a>
             <a href="#pizzas" class="category-pill">Pizzas</a>
@@ -424,56 +145,227 @@
         </div>
     </section>
 
-    <section id="entrantes" class="menu-section">
-        <h2 class="section-title">ENTRANTES</h2>
-        <div class="menu-items">
-            <div class="menu-item featured-item">
-                <div class="item-header">
-                    <div class="item-name">Berenjena asada a la Capellana</div>
-                    <div class="item-price">12,95 €</div>
-                </div>
-                <div class="item-description">Decorada con pimentón, polvo de cacahuete, azúcar de coco y gérmenes de cilantro, acompañada de una salsa de mostaza antigua, yogur y miel</div>
+    
+    <section id="entrantes-calientes" class="menu-section">
+    <h2 class="section-title">ENTRANTES CALIENTES</h2>
+    <div class="menu-items">
+        <div class="menu-item featured-item">
+            <div class="item-header">
+                <div class="item-name">Berenjena asada a la Capellana</div>
+                <div class="item-price">12,95 €</div>
             </div>
-            
-            <div class="menu-item">
-                <div class="item-header">
-                    <div class="item-name">Pulpo a la brasa</div>
-                    <div class="item-price">19,95 €</div>
-                </div>
-                <div class="item-description">Sobre crema de boniato, decorado con pimentón De la Vera y ajoaceite</div>
+            <div class="item-description">Con pimentón, polvo de cacahuete, azúcar de coco, gérmenes de cilantro, y salsa de mostaza antigua, yogur y miel</div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Pulpo a la brasa</div>
+                <div class="item-price">19,95 €</div>
             </div>
-            
-            <div class="menu-item">
-                <div class="item-header">
-                    <div class="item-name">Tataki de atún</div>
-                    <div class="item-price">17,95 €</div>
-                </div>
-                <div class="item-description">En pipirrana de crudité</div>
+            <div class="item-description">Sobre crema de boniato con pimentón De la Vera y ajoaceite</div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Tataki de atún</div>
+                <div class="item-price">17,95 €</div>
             </div>
-            
-            <div class="menu-item">
-                <div class="item-header">
-                    <div class="item-name">Mejillones thai</div>
-                    <div class="item-price">18,95 €</div>
-                </div>
-            </div>
-            
-            <div class="menu-item">
-                <div class="item-header">
-                    <div class="item-name">Ceviche de pescado blanco</div>
-                    <div class="item-price">16,95 €</div>
-                </div>
-            </div>
-            
-            <div class="menu-item">
-                <div class="item-header">
-                    <div class="item-name">Tartare de salmón</div>
-                    <div class="item-price">18,95 €</div>
-                </div>
-                <div class="item-description">Con aguacate y mango</div>
+            <div class="item-description">En pipirrana de crudité</div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Mejillones thai</div>
+                <div class="item-price">18,95 €</div>
             </div>
         </div>
-    </section>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Mejillones al vapor</div>
+                <div class="item-price">16,95 €</div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Calamar de playa a la brasa</div>
+                <div class="item-price">22,95 €</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="entrantes-frios" class="menu-section">
+    <h2 class="section-title">ENTRANTES FRÍOS</h2>
+    <div class="menu-items">
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Ceviche de pescado blanco</div>
+                <div class="item-price">16,95 €</div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Tartare de atún</div>
+                <div class="item-price">18,95 €</div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Tartare de salmón</div>
+                <div class="item-price">18,95 €</div>
+            </div>
+            <div class="item-description">Con aguacate y mango</div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Sandwich de Steak Tartare</div>
+                <div class="item-price">14,95 €</div>
+            </div>
+            <div class="item-description">En emulsión de yema y mostaza, en pan brioche</div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Queso zamorano</div>
+                <div class="item-price">12,95 €</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="vegano-vegetariano" class="menu-section">
+    <h2 class="section-title">VEGANO / VEGETARIANO</h2>
+    <div class="menu-items">
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Lasaña vegana</div>
+                <div class="item-price">14,95 €</div>
+            </div>
+            <div class="item-description"><span class="vegan-icon">🌱 APTO VEGANOS</span></div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Spaguetti boloñesa vegana</div>
+                <div class="item-price">12,95 €</div>
+            </div>
+            <div class="item-description"><span class="vegan-icon">🌱 APTO VEGANOS</span></div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Parrillada de verduras a la brasa</div>
+                <div class="item-price">11,95 €</div>
+            </div>
+            <div class="item-description"><span class="vegan-icon">🌱 APTO VEGANOS</span></div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Hamburguesa vegana con patatas</div>
+                <div class="item-price">15,95 €</div>
+            </div>
+            <div class="item-description"><span class="vegan-icon">🌱 APTO VEGANOS</span></div>
+        </div>
+    </div>
+</section>
+
+<section id="ensaladas" class="menu-section">
+    <h2 class="section-title">ENSALADAS</h2>
+    <div class="menu-items">
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Burrata en textura de tres tomates</div>
+                <div class="item-price">15,95 €</div>
+            </div>
+            <div class="item-description">Tomatitos cherry, tomate confitado, tomates secos, rúcula y salsa pesto</div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">De pollo</div>
+                <div class="item-price">14,95 €</div>
+            </div>
+            <div class="item-description">Lechugas variadas, pechuga de pollo rebozada, bacon frito, almendras laminadas, tostaditos, salsa césar y parmesano</div>
+            <div class="item-allergens">Puede contener trazas de gluten</div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">De la casa</div>
+                <div class="item-price">13,95 €</div>
+            </div>
+            <div class="item-description">Lechugas variadas, tomate, atún, cebolla, maíz, huevo y zanahoria rallada</div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Ensalada de salmón</div>
+                <div class="item-price">15,95 €</div>
+            </div>
+            <div class="item-description">Lechugas mixtas, salmón, aguacate, queso de cabra, nueces y culis de mango</div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Ensalada de ventresca de atún y tomate valenciano</div>
+                <div class="item-price">15,95 €</div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Ensalada de quínoa</div>
+                <div class="item-price">12,95 €</div>
+            </div>
+            <div class="item-description">Lechuga, quínoa, tomates secos, aguacate, aceitunas sicilianas, maíz y semillas tostadas <span class="vegan-icon">🌱 APTO VEGANOS</span></div>
+        </div>
+    </div>
+</section>
+
+<section id="frituras" class="menu-section">
+    <h2 class="section-title">FRITURAS</h2>
+    <div class="menu-items">
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Calamares fritos (a la andaluza)</div>
+                <div class="item-price">16,95 €</div>
+            </div>
+            <div class="item-allergens">Puede contener trazas de gluten</div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Boquerones</div>
+                <div class="item-price">16,95 €</div>
+            </div>
+            <div class="item-allergens">Puede contener trazas de gluten</div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Fritura mixta de pescado</div>
+                <div class="item-price">19,95 €</div>
+            </div>
+            <div class="item-allergens">Puede contener trazas de gluten</div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Chopitos fritos (calamar volador)</div>
+                <div class="item-price">14,95 €</div>
+            </div>
+        </div>
+    </div>
+</section>
+
 
     <section id="paellas" class="menu-section">
         <h2 class="section-title">PAELLAS</h2>
@@ -495,6 +387,14 @@
                     <div class="item-price">16,95 € por persona</div>
                 </div>
                 <div class="item-description">Mariscos variados</div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-header">
+                    <div class="item-name">A banda</div>
+                    <div class="item-price">15,95 € por persona</div>
+                </div>
+                <div class="item-description">Mariscos varios pelados</div>
             </div>
             
             <div class="menu-item">
@@ -521,8 +421,23 @@
                 </div>
                 <div class="item-description">Langosta.</div>
             </div>
-            
-          
+
+
+             <div class="menu-item">
+                <div class="item-header">
+                    <div class="item-name">Fideuá de fideo fino al negro de sepia</div>
+                    <div class="item-price">16,95 € por persona</div>
+                </div>
+                <div class="item-description">Marisco.</div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-header">
+                    <div class="item-name">Fideuá de fideo fino</div>
+                    <div class="item-price">16,95 € por persona</div>
+                </div>
+                <div class="item-description">Marisco.</div>
+            </div>
             
             <div class="menu-item">
                 <div class="item-header">
@@ -531,8 +446,242 @@
                 </div>
                 <div class="item-description">Verduras mixtas <span class="vegan-icon">🌱 APTO VEGANOS</span></div>
             </div>
+
+            <div class="menu-item">
+                <div class="item-header">
+                    <div class="item-name">De pato, setas y foie</div>
+                    <div class="item-price">22,00 € por persona</div>
+                </div>
+                <div class="item-description">Arroz o fideuá.</div>
+            </div>
+
+             <div class="menu-item">
+                <div class="item-header">
+                    <div class="item-name">De secreto ibérico y Ajos Tiernos</div>
+                    <div class="item-price">17,95 € por persona</div>
+                </div>
+                
+            </div>
         </div>
     </section>
+
+    <section id="risottos" class="menu-section">
+    <h2 class="section-title">RISOTTI</h2>
+    <div class="menu-items">
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Risotto a la pescatora (marisco)</div>
+                <div class="item-price">19,95 €</div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Risotto ai funghi porcini (con setas boletus)</div>
+                <div class="item-price">17,95 €</div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Risotto al tartufo con crujiente de jamón</div>
+                <div class="item-price">17,95 €</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="melosos-arroz" class="menu-section">
+    <h2 class="section-title">MELOSOS DE ARROZ</h2>
+    <div class="paella-note">
+            mínimo de 2 personas
+        </div>
+   
+    <div class="menu-items">
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Bogavante</div>
+                <div class="item-price">25,00 € por persona</div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Marisco</div>
+                <div class="item-price">19,50 € por persona</div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Langosta</div>
+                <div class="item-price">26,00 € por persona</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="carnes" class="menu-section">
+    <h2 class="section-title">CARNES</h2>
+    <div class="menu-items">
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Hamburguesa de pollo crujiente</div>
+                <div class="item-price">13,95 €</div>
+            </div>
+            <div class="item-description">Pollo rebozado, queso chédar, lechuga, tomate y mayonesa</div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Satay de pollo al curry con crema de garbanzos</div>
+                <div class="item-price">15,95 €</div>
+            </div>
+            <div class="item-description">Acompañado de pan yufka y crudité</div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Hamburguesa Black Angus 200gr con patatas fritas</div>
+                <div class="item-price">16,95 €</div>
+            </div>
+            <div class="item-description">Carne de Angus, bacon ahumado, queso cheddar, salsa casera, cebolla caramelizada y pepinillo picado <br><em>(Añadir huevo +1€)</em></div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Entrecot de ternera 330/350 gr</div>
+                <div class="item-price">24,95 €</div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Chuletón de vaca frisona a la piedra 1kg(para 2 personas)</div>
+                <div class="item-price">59,95 €</div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Solomillo de ternera 220/250 gr</div>
+                <div class="item-price">26,95 €</div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Secreto de ibérico a la crema de trufa y patatas</div>
+                <div class="item-price">18,95 €</div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Chuletas de cordero con patatas</div>
+                <div class="item-price">21,95 €</div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Pollo rústico a la brasa</div>
+                <div class="item-price">16,95 €</div>
+            </div>
+            <div class="item-description">Acompañado de patatas, ensalada de rúcula, tomate cherry y parmesano</div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Parrillada de carne con patatas (para 2 personas)</div>
+                <div class="item-price">60,00 €</div>
+            </div>
+            <div class="item-description">Solomillo, entrecot y embutido de pueblo acompañado de patatas fritas</div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Costillas de cerdo a la barbacoa</div>
+                <div class="item-price">18,00 €</div>
+            </div>
+            <div class="item-description">Con patatas fritas</div>
+        </div>
+    </div>
+</section>
+
+<section id="pescados" class="menu-section">
+    <h2 class="section-title">PESCADOS</h2>
+    <div class="menu-items">
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Bacalao sobre crema de patatas</div>
+                <div class="item-price">18,95 €</div>
+            </div>
+            <div class="item-description">Tomate seco, hierbas ahumadas, ajetes y aceitunas negras</div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Gambones gigantes al horno</div>
+                <div class="item-price">19,00 €</div>
+            </div>
+            <div class="item-description">6 unidades</div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Atún rojo con salsa romescu</div>
+                <div class="item-price">19,95 €</div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Emperador</div>
+                <div class="item-price">17,95 €</div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Salmón</div>
+                <div class="item-price">17,95 €</div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Mariscada (para 2 personas)</div>
+                <div class="item-price">110,00 €</div>
+            </div>
+            <div class="item-description">Bogavante, langosta, gambones, cigalas, mejillones y navajas.</div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Pescado fresco de lonja</div>
+                <div class="item-price">Consultar precio</div>
+            </div>
+            <div class="item-description">Preguntar disponibilidad y precio</div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Parrillada de pescado (para 2 personas)</div>
+                <div class="item-price">55,95 €</div>
+            </div>
+            <div class="item-description">Preguntar disponibilidad</div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-header">
+                <div class="item-name">Fish and chips</div>
+                <div class="item-price">14,95 €</div>
+            </div>
+            <div class="item-description">Pescado frito rebozado con patatas fritas</div>
+        </div>
+    </div>
+</section>
 
     <section id="pizzas" class="menu-section">
         <h2 class="section-title">PIZZAS</h2>
@@ -689,56 +838,6 @@
         </div>
     </footer>
 
-    <script>
-        // Smooth scrolling for category navigation
-        document.querySelectorAll('.category-pill').forEach(pill => {
-            pill.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                // Remove active class from all pills
-                document.querySelectorAll('.category-pill').forEach(p => p.classList.remove('active'));
-                
-                // Add active class to clicked pill
-                this.classList.add('active');
-                
-                // Smooth scroll to section
-                const targetId = this.getAttribute('href').substring(1);
-                const targetSection = document.getElementById(targetId);
-                
-                if (targetSection) {
-                    const headerHeight = document.querySelector('.header').offsetHeight;
-                    const navHeight = document.querySelector('.category-nav').offsetHeight;
-                    const targetPosition = targetSection.offsetTop - headerHeight - navHeight - 10;
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Update active pill on scroll
-        window.addEventListener('scroll', function() {
-            const sections = document.querySelectorAll('.menu-section');
-            const pills = document.querySelectorAll('.category-pill');
-            
-            let currentSection = '';
-            
-            sections.forEach(section => {
-                const rect = section.getBoundingClientRect();
-                if (rect.top <= 150 && rect.bottom >= 150) {
-                    currentSection = section.id;
-                }
-            });
-            
-            pills.forEach(pill => {
-                pill.classList.remove('active');
-                if (pill.getAttribute('href') === `#${currentSection}`) {
-                    pill.classList.add('active');
-                }
-            });
-        });
-    </script>
+    <script src="scripts.js"></script>
 </body>
 </html>

@@ -1,78 +1,373 @@
- 
- 
-  * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    body {
-      font-family: sans-serif;
-    }
- 
- .home {
-      position: relative;
-      height: 100vh;
-      background-image: url('tu-imagen.jpg'); /* cambia por tu imagen real */
-      background-size: cover;
-      background-position: center;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 1rem;
-    }
+body {
+  font-family: 'Righteous', sans-serif;
+  line-height: 1.6;
+  color: #0F0E0E;
+  background-color: #fff;
+}
+body.home-page {
+  background-color: #000000;
+  
+}
 
-    .home-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
 
-    .logo {
-      font-size: 1.2rem;
-      font-weight: bold;
-    }
 
-    .hamburguesa {
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
+/* ========== HEADER ========== */
+.header {
+  background-color: #876445;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
 
-    .home-content {
-      text-align: center;
-      margin-top: auto;
-      margin-bottom: 4rem;
-    }
+.header__logo img.logo-img {
+  height: 50px;
+  width: auto;
+  display: block;
+}
 
-    .home-content h1 {
-      font-size: 2rem;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    }
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
-    .btn-reservas {
-      margin-top: 1rem;
-      background: rgba(255,255,255,0.9);
-      color: #000;
-      border: none;
-      padding: 0.5rem 1rem;
-      font-size: 0.9rem;
-      border-radius: 20px;
-      text-decoration: none;
-      
-    }
+.menu-btn,
+.reservar-btn {
+  font-family: 'Righteous', sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
 
-    .btn-reservas:hover {
-      background: #ddd;
-    }
+/* Botón hamburguesa */
+.menu-btn {
+  background: transparent;
+  color: #EEC373;
+  border: 2px solid #EEC373;
+  padding: 8px 12px;
+}
 
-    /* Desktop view */
-    @media (min-width: 768px) {
-      .home-content h1 {
-        font-size: 3rem;
-      }
+/* Botón reservar */
+.reservar-btn {
+  background-color: #EEC373;
+  color: #0F0E0E;
+  padding: 8px 16px;
+  border: none;
+}
 
-      .btn-reservas {
-        font-size: 1rem;
-      }
-    }
+.reservar-btn:hover {
+  background-color: #CA965C;
+}
+
+/* ===== RESPONSIVE HEADER ===== */
+@media (min-width: 768px) {
+  .menu-btn {
+    font-size: 16px;
+    padding: 10px 14px;
+  }
+  .reservar-btn {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  /* En escritorio puedes ocultar hamburguesa y luego mostrar un menú horizontal si quieres */
+  .menu-btn {
+    display: none;
+  }
+}
+
+
+
+/* ========== HERO SECTION (Home) ========== */
+.home {
+  background: url('/img/tu-imagen-de-fondo.jpg') no-repeat center center;
+  background-size: cover;
+  min-height: 100vh; /* Ocupa toda la altura de la ventana */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.home-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.logo-home {
+  height: 350px; /* Ajusta el tamaño según prefieras */
+  width: auto;
+}
+
+
+
+
+/* ========== BIO SECTION ========== */
+
+.titulo-bio{
+color: #EEC373;
+}
+
+
+
+/* ========== CARTA ========== */
+
+
+.hero {
+  background: linear-gradient(rgba(15, 14, 14, 0.4), rgba(15, 14, 14, 0.4)),
+    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23876445"/><circle cx="20" cy="20" r="2" fill="%23EEC373" opacity="0.3"/><circle cx="80" cy="30" r="1.5" fill="%23EEC373" opacity="0.2"/><circle cx="50" cy="70" r="1" fill="%23EEC373" opacity="0.4"/></svg>');
+  background-size: cover;
+  background-position: center;
+  padding: 60px 20px;
+  text-align: center;
+  color: #EEC373;
+}
+
+
+.hero h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.hero h1:before,
+.hero h1:after {
+  content: '';
+  width: 60px;
+  height: 2px;
+  background-color: #EEC373;
+}
+
+.hero p {
+  font-size: 16px;
+  margin-top: 10px;
+  opacity: 0.9;
+}
+
+
+
+
+
+
+
+
+/* ========== CATEGORY NAVIGATION ========== */
+.category-nav {
+  background-color: #fff;
+  padding: 15px 0;
+  overflow-x: auto;
+  white-space: nowrap;
+  border-bottom: 2px solid #F4DFBA;
+  position: sticky;
+  top: 70px;
+  z-index: 90;
+}
+
+.category-nav::-webkit-scrollbar {
+  height: 4px;
+}
+
+.category-nav::-webkit-scrollbar-track {
+  background: #F4DFBA;
+}
+
+.category-nav::-webkit-scrollbar-thumb {
+  background: #EEC373;
+  border-radius: 2px;
+}
+
+.category-pills {
+  display: flex;
+  gap: 10px;
+  padding: 0 20px;
+}
+
+.category-pill {
+  background-color: #F4DFBA;
+  color: #0F0E0E;
+  padding: 8px 16px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+.category-pill.active,
+.category-pill:hover {
+  background-color: #EEC373;
+  color: #0F0E0E;
+}
+
+/* ========== MENU SECTIONS ========== */
+.menu-section {
+  padding: 40px 20px;
+}
+
+.section-title {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #0F0E0E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.section-title:before,
+.section-title:after {
+  content: '';
+  width: 60px;
+  height: 2px;
+  background-color: #EEC373;
+}
+
+.menu-items {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.menu-item {
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #F4DFBA;
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+.item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 5px;
+}
+
+.item-name {
+  font-size: 16px;
+  font-weight: bold;
+  color: #0F0E0E;
+  flex: 1;
+  margin-right: 10px;
+}
+
+.item-price {
+  font-size: 16px;
+  font-weight: bold;
+  color: #EEC373;
+  white-space: nowrap;
+}
+
+.item-description {
+  font-size: 14px;
+  color: #876445;
+  margin-top: 5px;
+  line-height: 1.4;
+}
+
+.item-allergens {
+  font-size: 12px;
+  color: #CA965C;
+  margin-top: 5px;
+  font-style: italic;
+}
+
+.vegan-icon {
+  color: #4CAF50;
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+/* Featured Items */
+.featured-item {
+  background-color: #F4DFBA;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.featured-item .item-name {
+  color: #0F0E0E;
+  font-size: 18px;
+}
+
+/* Paella Special Section */
+.paella-note {
+  background-color: #EEC373;
+  color: #0F0E0E;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* ========== FOOTER ========== */
+.footer {
+  background-color: #0F0E0E;
+  color: #EEC373;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.footer h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.footer p {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.social-icons {
+  margin-top: 20px;
+}
+
+.social-icons a {
+  color: #EEC373;
+  font-size: 24px;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+/* ========== RESPONSIVE GENERAL ========== */
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 24px;
+  }
+  .hero h1:before,
+  .hero h1:after {
+    width: 40px;
+  }
+  .section-title {
+    font-size: 20px;
+  }
+  .section-title:before,
+  .section-title:after {
+    width: 40px;
+  }
+}

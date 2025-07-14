@@ -1,0 +1,78 @@
+ 
+ 
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: sans-serif;
+    }
+ 
+ .home {
+      position: relative;
+      height: 100vh;
+      background-image: url('tu-imagen.jpg'); /* cambia por tu imagen real */
+      background-size: cover;
+      background-position: center;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 1rem;
+    }
+
+    .home-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .hamburguesa {
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .home-content {
+      text-align: center;
+      margin-top: auto;
+      margin-bottom: 4rem;
+    }
+
+    .home-content h1 {
+      font-size: 2rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+
+    .btn-reservas {
+      margin-top: 1rem;
+      background: rgba(255,255,255,0.9);
+      color: #000;
+      border: none;
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+      border-radius: 20px;
+      text-decoration: none;
+      
+    }
+
+    .btn-reservas:hover {
+      background: #ddd;
+    }
+
+    /* Desktop view */
+    @media (min-width: 768px) {
+      .home-content h1 {
+        font-size: 3rem;
+      }
+
+      .btn-reservas {
+        font-size: 1rem;
+      }
+    }

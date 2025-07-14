@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Divina Comedia - Carta</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Righteous';
+            line-height: 1.6;
+            color: #0F0E0E;
+            background-color: #fff;
+        }
+
+        /* Header */
+        .header {
+            background-color: #876445;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            color: #EEC373;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .menu-btn, .reservar-btn {
+            background-color: #EEC373;
+            color: #0F0E0E;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .menu-btn {
+            background-color: transparent;
+            color: #EEC373;
+            border: 2px solid #EEC373;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(15, 14, 14, 0.4), rgba(15, 14, 14, 0.4)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23876445"/><circle cx="20" cy="20" r="2" fill="%23EEC373" opacity="0.3"/><circle cx="80" cy="30" r="1.5" fill="%23EEC373" opacity="0.2"/><circle cx="50" cy="70" r="1" fill="%23EEC373" opacity="0.4"/></svg>');
+            background-size: cover;
+            background-position: center;
+            padding: 60px 20px;
+            text-align: center;
+            color: #EEC373;
+        }
+
+        .hero h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .hero h1:before,
+        .hero h1:after {
+            content: '';
+            width: 60px;
+            height: 2px;
+            background-color: #EEC373;
+        }
+
+        .hero p {
+            font-size: 16px;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+
+        /* Category Navigation */
+        .category-nav {
+            background-color: #fff;
+            padding: 15px 0;
+            overflow-x: auto;
+            white-space: nowrap;
+            border-bottom: 2px solid #F4DFBA;
+            position: sticky;
+            top: 70px;
+            z-index: 90;
+        }
+
+        .category-nav::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .category-nav::-webkit-scrollbar-track {
+            background: #F4DFBA;
+        }
+
+        .category-nav::-webkit-scrollbar-thumb {
+            background: #EEC373;
+            border-radius: 2px;
+        }
+
+        .category-pills {
+            display: flex;
+            gap: 10px;
+            padding: 0 20px;
+        }
+
+        .category-pill {
+            background-color: #F4DFBA;
+            color: #0F0E0E;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+
+        .category-pill.active,
+        .category-pill:hover {
+            background-color: #EEC373;
+            color: #0F0E0E;
+        }
+
+        /* Menu Sections */
+        .menu-section {
+            padding: 40px 20px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #0F0E0E;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .section-title:before,
+        .section-title:after {
+            content: '';
+            width: 60px;
+            height: 2px;
+            background-color: #EEC373;
+        }
+
+        .menu-items {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .menu-item {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #F4DFBA;
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 5px;
+        }
+
+        .item-name {
+            font-size: 16px;
+            font-weight: bold;
+            color: #0F0E0E;
+            flex: 1;
+            margin-right: 10px;
+        }
+
+        .item-price {
+            font-size: 16px;
+            font-weight: bold;
+            color: #EEC373;
+            white-space: nowrap;
+        }
+
+        .item-description {
+            font-size: 14px;
+            color: #876445;
+            margin-top: 5px;
+            line-height: 1.4;
+        }
+
+        .item-allergens {
+            font-size: 12px;
+            color: #CA965C;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        .vegan-icon {
+            color: #4CAF50;
+            font-size: 12px;
+            margin-left: 5px;
+        }
+
+        /* Featured Items */
+        .featured-item {
+            background-color: #F4DFBA;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .featured-item .item-name {
+            color: #0F0E0E;
+            font-size: 18px;
+        }
+
+        /* Paella Special Section */
+        .paella-note {
+            background-color: #EEC373;
+            color: #0F0E0E;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #0F0E0E;
+            color: #EEC373;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .footer h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .footer p {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .social-icons {
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            color: #EEC373;
+            font-size: 24px;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 24px;
+            }
+            
+            .hero h1:before,
+            .hero h1:after {
+                width: 40px;
+            }
+            
+            .section-title {
+                font-size: 20px;
+            }
+            
+            .section-title:before,
+            .section-title:after {
+                width: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <a href="#" class="logo">La Divina Comedia</a>
+        <div>
+            <button class="menu-btn">☰</button>
+            <a href="#" class="reservar-btn">RESERVAR</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>NUESTRA CARTA</h1>
+        <p>Sabores auténticos de la cocina mediterránea</p>
+    </section>
+
+    <!-- Category Navigation -->
+    <nav class="category-nav">
+        <div class="category-pills">
+            <a href="#tapas" class="category-pill active">Tapas</a>
+            <a href="#entrantes" class="category-pill">Entrantes</a>
+            <a href="#ensaladas" class="category-pill">Ensaladas</a>
+            <a href="#paellas" class="category-pill">Paellas</a>
+            <a href="#carnes" class="category-pill">Carnes</a>
+            <a href="#pescados" class="category-pill">Pescados</a>
+            <a href="#pizzas" class="category-pill">Pizzas</a>
+            <a href="#postres" class="category-pill">Postres</a>
+            <a href="#bebidas" class="category-pill">Bebidas</a>
+        </div>
+    </nav>
+
+    <!-- Menu Sections -->
+    <section id="tapas" class="menu-section">
+        <h2 class="section-title">TAPAS</h2>
+        <div class="menu-items">
+            <div class="menu-item featured-item">
+                <div class="item-header">
+                    <div class="item-name">Nachos</div>
+                    <div class="item-price">14,95 €</div>
+                </div>
+                <div class="item-description">Con queso, guacamole, chili con carne, crema ácida y pico de gallo</div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <div class="item-name">Patatas bravas</div>
+                    <div class="item-price">9,95 €</div>
+                </div>
+                <div class="item-allergens">Puede contener trazas de gluten</div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <div class="item-name">Croquetas caseras</div>
+                    <div class="item-price">2,00 € unidad</div>
+                </div>
+                <div class="item-description">De jamón, pollo, bacalao, boletus (Mínimo 2 unidades)</div>
+                <div class="item-allergens">Puede contener trazas de gluten</div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <div class="item-name">Gambas al ajillo</div>
+                    <div class="item-price">14,95 €</div>
+                </div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <div class="item-name">Jamón ibérico 100gr</div>
+                    <div class="item-price">18,95 €</div>
+                </div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <div class="item-name">Queso de cabra rebozado y frito con confitura de tomate</div>
+                    <div class="item-price">12,95 €</div>
+                </div>
+                <div class="item-description"></div>
+            </div>
+            <div class="menu-item">
+                <div class="item-header">
+                    <div class="item-name">Patatas fritas</div>
+                    <div class="item-price">6,95 €</div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="item-header">
+                    <div class="item-name">Torres de boniato frito en dos salsas</div>
+                    <div class="item-price">10,95 €</div>
+                </div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <div class="item-name">Gambas a la brasa</div>
+                    <div class="item-price">3,75 € unidad</div>
+                </div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <div class="item-name">Provolone al horno</div>
+                    <div class="item-price">9,95 €</div>
+                </div>
+                <div class="item-description">Fondue de queso</div>
+            </div>
+             <div class="menu-item">
+                <div class="item-header">
+                    <div class="item-name">Focacha</div>
+                    <div class="item-price">6,95 €</div>
+                </div>
+                <div class="item-description">pan de pizza</div>
+            </div>
+
+                <div class="menu-item">
+                <div class="item-header">
+                    <div class="item-name">Pan con tomate y alioli</div>
+                    <div class="item-price">7,95 €</div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </section>
+
+    <section id="entrantes" class="menu-section">
+        <h2 class="section-title">ENTRANTES</h2>
+        <div class="menu-items">
+            <div class="menu-item featured-item">
+                <div class="item-header">
+                    <div class="item-name">Berenjena asada a la Capellana</div>
+                    <div class="item-price">12,95 €</div>
+                </div>
+                <div class="item-description">Decorada con pimentón, polvo de cacahuete, azúcar de coco y gérmenes de cilantro, acompañada de una salsa de mostaza antigua, yogur y miel</div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <div class="item-name">Pulpo a la brasa</div>
+                    <div class="item-price">19,95 €</div>
+                </div>
+                <div class="item-description">Sobre crema de boniato, decorado con pimentón De la Vera y ajoaceite</div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <div class="item-name">Tataki de atún</div>
+                    <div class="item-price">17,95 €</div>
+                </div>
+                <div class="item-description">En pipirrana de crudité</div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <div class="item-name">Mejillones thai</div>
+                    <div class="item-price">18,95 €</div>
+                </div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <div class="item-name">Ceviche de pescado blanco</div>
+                    <div class="item-price">16,95 €</div>
+                </div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <div class="item-name">Tartare de salmón</div>
+                    <div class="item-price">18,95 €</div>
+                </div>
+                <div class="item-description">Con aguacate y mango</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="paellas" class="menu-section">
+        <h2 class="section-title">PAELLAS</h2>
+        <div class="paella-note">
+            Todas las paellas son para un mínimo de 2 personas
+        </div>
+        <div class="menu-items">
+            <div class="menu-item">
+                <div class="item-header">
+                    <div class="item-name">Valenciana</div>
+                    <div class="item-price">15,95 € por persona</div>
+                </div>
+                <div class="item-description">Pollo, conejo y verdura</div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <div class="item-name">Marisco</div>
+                    <div class="item-price">16,95 € por persona</div>
+                </div>
+                <div class="item-description">Mariscos variados</div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <div class="item-name">Arroz Negro</div>
+                    <div class="item-price">16,95 € por persona</div>
+                </div>
+                <div class="item-description">Calamares y gambas al negro de sepia</div>
+            </div>
+
+
+            <div class="menu-item">
+                <div class="item-header">
+                    <div class="item-name">Paella de Bogavante</div>
+                    <div class="item-price">23,00 € por persona</div>
+                </div>
+                <div class="item-description">Bogavante, calamares y gambas.</div>
+            </div>
+
+             <div class="menu-item">
+                <div class="item-header">
+                    <div class="item-name">Paella de Langosta</div>
+                    <div class="item-price">25,00 € por persona</div>
+                </div>
+                <div class="item-description">Langosta.</div>
+            </div>
+            
+          
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <div class="item-name">De verduras</div>
+                    <div class="item-price">14,95 € por persona</div>
+                </div>
+                <div class="item-description">Verduras mixtas <span class="vegan-icon">🌱 APTO VEGANOS</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pizzas" class="menu-section">
+        <h2 class="section-title">PIZZAS</h2>
+        <div class="menu-items">
+            <div class="menu-item">
+                <div class="item-header">
+                    <div class="item-name">Margherita</div>
+                    <div class="item-price">10,95 €</div>
+                </div>
+                <div class="item-description">Tomate, mozzarella, aceite de oliva, orégano</div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <div class="item-name">4 Stagioni</div>
+                    <div class="item-price">14,95 €</div>
+                </div>
+                <div class="item-description">Tomate, mozzarella, jamón york, champiñones, alcachofas y aceitunas negras</div>
+            </div>
+            
+            <div class="menu-item featured-item">
+                <div class="item-header">
+                    <div class="item-name">Divina Comedia</div>
+                    <div class="item-price">14,95 €</div>
+                </div>
+                <div class="item-description">Nata, mozzarella, pesto, cebolla, bacon y champiñones</div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <div class="item-name">Vegetale</div>
+                    <div class="item-price">13,95 €</div>
+                </div>
+                <div class="item-description">Tomate, mozzarella, alcachofa, cebolla, tomate natural, champiñones, calabacín y aceitunas negras <span class="vegan-icon">🌱 APTO VEGANOS</span></div>
+            </div>
+            
+            <div class="menu-item featured-item">
+                <div class="item-header">
+                    <div class="item-name">Pizza Burrata</div>
+                    <div class="item-price">16,95 €</div>
+                </div>
+                <div class="item-description">Crema de tomates secos, cebolla roja, tomate cherry, rúcula y burrata</div>
+            </div>
+            
+            <div class="menu-item featured-item">
+                <div class="item-header">
+                    <div class="item-name">Pistacchio e Burrata</div>
+                    <div class="item-price">17,95 €</div>
+                </div>
+                <div class="item-description">Crema de pistacho, burrata, mortadela y rúcula</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="postres" class="menu-section">
+        <h2 class="section-title">POSTRES</h2>
+        <div class="menu-items">
+            <div class="menu-item">
+                <div class="item-header">
+                    <div class="item-name">Tiramisú</div>
+                    <div class="item-price">6,50 €</div>
+                </div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <div class="item-name">Tiramisú de pistacho</div>
+                    <div class="item-price">7,50 €</div>
+                </div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <div class="item-name">Brownie de chocolate</div>
+                    <div class="item-price">6,95 €</div>
+                </div>
+                <div class="item-description">Con helado de vainilla</div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <div class="item-name">Coulant de pistacho</div>
+                    <div class="item-price">6,95 €</div>
+                </div>
+            </div>
+            
+            <div class="menu-item featured-item">
+                <div class="item-header">
+                    <div class="item-name">Pizza dulce</div>
+                    <div class="item-price">9,95 €</div>
+                </div>
+                <div class="item-description">Nutella y crema de pistacho (para 2-4 personas)</div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <div class="item-name">Fruta de temporada</div>
+                    <div class="item-price">4,00 €</div>
+                </div>
+                <div class="item-description"><span class="vegan-icon">🌱 APTO VEGANOS</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="bebidas" class="menu-section">
+        <h2 class="section-title">BEBIDAS</h2>
+        <div class="menu-items">
+            <div class="menu-item">
+                <div class="item-header">
+                    <div class="item-name">Jarra de sangría</div>
+                    <div class="item-price">14,95 €</div>
+                </div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <div class="item-name">Copa agua de Valencia</div>
+                    <div class="item-price">5,95 €</div>
+                </div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <div class="item-name">Aperol Spritz</div>
+                    <div class="item-price">7,00 €</div>
+                </div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <div class="item-name">Café con leche</div>
+                    <div class="item-price">2,20 €</div>
+                </div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <div class="item-name">Café irlandés</div>
+                    <div class="item-price">5,50 €</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <h3>La Divina Comedia</h3>
+        <p>Teléfono: 963 799 368</p>
+        <p>De Lunes a Domingo de 13:00h a 1:00h</p>
+        <p>Av Divino Comedia 28A, Torrent</p>
+        <div class="social-icons">
+            <a href="#">📘</a>
+            <a href="#">📷</a>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for category navigation
+        document.querySelectorAll('.category-pill').forEach(pill => {
+            pill.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all pills
+                document.querySelectorAll('.category-pill').forEach(p => p.classList.remove('active'));
+                
+                // Add active class to clicked pill
+                this.classList.add('active');
+                
+                // Smooth scroll to section
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                
+                if (targetSection) {
+                    const headerHeight = document.querySelector('.header').offsetHeight;
+                    const navHeight = document.querySelector('.category-nav').offsetHeight;
+                    const targetPosition = targetSection.offsetTop - headerHeight - navHeight - 10;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Update active pill on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.menu-section');
+            const pills = document.querySelectorAll('.category-pill');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= 150 && rect.bottom >= 150) {
+                    currentSection = section.id;
+                }
+            });
+            
+            pills.forEach(pill => {
+                pill.classList.remove('active');
+                if (pill.getAttribute('href') === `#${currentSection}`) {
+                    pill.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

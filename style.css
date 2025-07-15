@@ -106,9 +106,9 @@ body.home-page .nav-menu {
 
 .nav-menu a {
   display: block;                 /* ocupa todo el ancho */
-  width: 100%;                    /* asegura el 100% */
-  padding: 12px 0;                /* espacio arriba y abajo */
-  border-bottom: 2px solid #EEC373; /* línea dorada */
+  width: 100%;                    
+  padding: 12px 0;                
+  border-bottom: 2px solid #EEC373; 
   color: #EEC373;
   text-decoration: none;
   font-weight: bold;
@@ -117,8 +117,8 @@ body.home-page .nav-menu {
 }
 
 .nav-menu a:hover {
-  color: #fff;
-  border-bottom: 2px solid #fff; 
+  color: #F4DFBA;
+  border-bottom: 2px solid #F4DFBA; 
 }
 
 /* Mostrar menú cuando header tiene clase menu-open */
@@ -217,7 +217,7 @@ body.home-page .nav-menu {
 .logo-home {
   height: 400px;     
   width: auto;
-  margin-top: -100px; /* 📱 margen base para móvil */
+  margin-top: -100px; 
 }
 
 /*  Pantallas medianas en adelante */
@@ -241,7 +241,7 @@ body.home-page .nav-menu {
 /* ====== A partir de 1600px ====== */
 @media (min-width: 1600px) {
   .home-bg {
-    background-size: 90% auto; /* un poco menos zoom en pantallas enormes */
+    background-size: 90% auto; 
     background-position: center center;
   }
   .home {
@@ -258,14 +258,180 @@ body.home-page .nav-menu {
 
 /* ========== BIO SECTION ========== */
 
-.titulo-bio{
-color: #EEC373;
+.bio-section {
+  background-color: #000000; 
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.bio-title {
+  font-family: 'Righteous', sans-serif;
+  color: #EEC373;
+  font-size: 26px;
+  margin-bottom: 20px;
+  position: relative;
+  display: inline-block;
+}
+
+/* Líneas doradas a los lados */
+.bio-title::before,
+.bio-title::after {
+  content: '';
+  display: inline-block;
+  width: 40px;
+  height: 2px;
+  background-color: #EEC373;
+  vertical-align: middle;
+  margin: 0 10px;
+}
+
+.bio-text {
+  color: #EEC373;
+  font-size: 14px;
+  line-height: 1.6;
+  max-width: 300px; 
+  margin: 0 auto 60px auto; /* centrado y espacio inferior */
+}
+
+.bio-images {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 80px; 
+}
+
+.bio-img {
+  width: 100%;
+  max-width: 320px;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 8px;
+  
+  display: block;
+  filter: brightness(0.85);
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+.bio-img:hover {
+  filter: brightness(1);
+  transform: scale(1.05);
+}
+
+/* ===== A partir de tablet/desktop ===== */
+@media (min-width: 768px) {
+  .bio-title {
+    font-size: 32px;
+  }
+  .bio-title::before,
+  .bio-title::after {
+    width: 60px;
+  }
+  .bio-text {
+    font-size: 20px;
+    max-width: 600px;
+  }
+  .bio-img {
+    max-width: 500px;
+    height: 400px;
+  }
 }
 
 
+/* ========== CARTA HOME ========== */
 
+.carta2-section {
+  background-color: #000; /* fondo negro */
+  padding: 40px 20px;
+  text-align: center;
+}
 
+.carta2-title {
+  font-family: 'Righteous', sans-serif;
+  color: #EEC373; /* dorado */
+  font-size: 26px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  position: relative;
+  display: inline-block;
+}
 
+.carta2-title::before,
+.carta2-title::after {
+  content: '';
+  display: inline-block;
+  width: 40px;
+  height: 2px;
+  background-color: #EEC373;
+  vertical-align: middle;
+  margin: 0 10px;
+}
+
+.carta2-text {
+  color: #EEC373;
+  font-size: 14px;
+  line-height: 1.6;
+  max-width: 300px;
+  margin: 0 auto 30px auto;
+}
+
+.carta2-btn {
+  display: inline-block;
+  background-color: #EEC373;
+  color: #000000;
+  font-family: 'Righteous', sans-serif;
+  font-size: 18px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  margin-bottom: 70px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.carta2-btn:hover {
+  background-color: #CA965C; /* tono más oscuro al pasar el ratón */
+  transform: scale(1.05);
+}
+
+.carta2-image-wrap {
+  margin-top: 20px;
+}
+
+.carta2-img {
+  width: 100%;
+  max-width: 410px;
+  height: 450px;
+  object-fit: cover;
+  border-radius: 12px;
+  filter: brightness(0.85);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.carta2-img:hover {
+  filter: brightness(1);
+  transform: scale(1.05);
+}
+
+/* ===== A partir de tablet/desktop ===== */
+@media (min-width: 768px) {
+  .carta2-title {
+    font-size: 32px;
+  }
+  .carta2-title::before,
+  .carta2-title::after {
+    width: 60px;
+  }
+  .carta2-text {
+    font-size: 20px;
+    max-width: 600px;
+  }
+  .carta2-img {
+    max-width: 700px;
+    height: 600px;
+  }
+  .carta2-btn {
+    font-size: 20px;
+    padding: 12px 24px;
+  }
+}
 
 
 

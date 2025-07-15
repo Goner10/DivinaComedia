@@ -297,23 +297,41 @@ body.home-page .nav-menu {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 80px; 
+  gap: 100px; 
 }
 
 .bio-img {
   width: 100%;
-  max-width: 320px;
-  height: 350px;
+  max-width: 350px;
+  height: 360px;
   object-fit: cover;
   border-radius: 8px;
-  
   display: block;
   filter: brightness(0.85);
   transition: transform 0.3s ease, filter 0.3s ease;
 }
-.bio-img:hover {
-  filter: brightness(1);
-  transform: scale(1.05);
+
+
+.bio-img-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.bio-img-wrap::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%; 
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0) 20%,   
+    rgba(0,0,0,0.6) 60%, 
+    rgba(0,0,0,1) 100%   
+  );
+  border-radius: 8px;
+  pointer-events: none;
 }
 
 /* ===== A partir de tablet/desktop ===== */
@@ -382,7 +400,7 @@ body.home-page .nav-menu {
   padding: 10px 20px;
   border-radius: 8px;
   text-decoration: none;
-  margin-bottom: 70px;
+  margin-bottom: 50px;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
@@ -391,24 +409,24 @@ body.home-page .nav-menu {
   transform: scale(1.05);
 }
 
-.carta2-image-wrap {
-  margin-top: 20px;
+.carta2-img-wrap {
+  position: relative;
+  margin-top: 30px;
 }
+
+
 
 .carta2-img {
   width: 100%;
   max-width: 410px;
   height: 450px;
   object-fit: cover;
-  border-radius: 12px;
-  filter: brightness(0.85);
+  border-radius: 8px;
+  filter: brightness(0.80);
   transition: filter 0.3s ease, transform 0.3s ease;
 }
 
-.carta2-img:hover {
-  filter: brightness(1);
-  transform: scale(1.05);
-}
+
 
 /* ===== A partir de tablet/desktop ===== */
 @media (min-width: 768px) {
@@ -435,6 +453,157 @@ body.home-page .nav-menu {
 
 
 
+/* ===== GALERIA ===== */
+
+
+.galeria-section {
+  background-color: #000;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.galeria-title {
+  font-family: 'Righteous', sans-serif;
+  color: #EEC373;
+  font-size: 26px;
+  margin-bottom: 10px;
+  position: relative;
+  display: inline-block;
+}
+
+.galeria-title::before,
+.galeria-title::after {
+  content: '';
+  display: inline-block;
+  width: 40px;
+  height: 2px;
+  background-color: #EEC373;
+  vertical-align: middle;
+  margin: 0 10px;
+}
+
+.galeria-text {
+  color: #EEC373;
+  font-size: 14px;
+  line-height: 1.6;
+  max-width: 300px;
+  margin: 0 auto 20px auto;
+}
+
+/* === Carrusel === */
+.carousel {
+  position: relative;
+  max-width: 300px; /* ajusta según tu diseño */
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.carousel-img {
+  min-width: 100%;
+  height: 400px; /* ajusta a tus imágenes */
+  object-fit: cover;
+  display: block;
+}
+
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  gap: 8px;
+}
+
+.indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(238, 195, 115, 0.5);
+  cursor: pointer;
+}
+
+.indicator.active {
+  background-color: #EEC373;
+}
+
+@media (min-width: 1024px) {
+  /* Secciones más anchas y tipografías mayores */
+  .bio-img {
+    max-width: 500px;
+    height: 400px;
+  }
+
+  .carta2-img {
+    max-width: 700px;
+    height: 600px;
+  }
+
+  .bio-text,
+  .carta2-text,
+  .galeria-text {
+    font-size: 18px;
+    max-width: 600px;
+  }
+
+  .bio-title,
+  .carta2-title,
+  .galeria-title {
+    font-size: 32px;
+  }
+
+  .carousel {
+    max-width: 600px; /* carrusel más grande en laptops */
+  }
+
+  .carousel-img {
+    height: 500px; /* más alto */
+  }
+}
+@media (min-width: 1600px) {
+  body {
+    font-size: 18px; /* texto más grande en general */
+  }
+
+  .bio-img {
+    max-width: 700px;
+    height: 500px;
+  }
+
+  .carta2-img {
+    max-width: 900px;
+    height: 700px;
+  }
+
+  .bio-title,
+  .carta2-title,
+  .galeria-title {
+    font-size: 40px;
+  }
+
+  .bio-text,
+  .carta2-text,
+  .galeria-text {
+    font-size: 22px;
+    max-width: 800px;
+  }
+
+  .carousel {
+    max-width: 800px; /* carrusel muy grande */
+  }
+
+  .carousel-img {
+    height: 600px;
+  }
+
+  .carta2-btn {
+    font-size: 22px;
+    padding: 16px 30px;
+  }
+}
 
 
 

@@ -28,6 +28,9 @@
     <a href="#reservas" class="reservar-btn">RESERVAR</a>
   </div>
 </header>
+
+
+
   <!-- HOME -->
  <section id="home" class="home">
   <div class="home-bg"></div> <!-- capa solo para el fondo -->
@@ -37,8 +40,8 @@
 </section>
 
 
-
-  <section id="biografia" class="bio-section">
+ <!-- RESTAURANTE -->
+ <section id="biografia" class="bio-section">
   <h2 class="bio-title">RESTAURANTE</h2>
   <p class="bio-text">
     Lorem ipsum dolor sit amet sit consectetur. Lorem ipsum dolor ipsum dolor sit amet.
@@ -46,13 +49,17 @@
   </p>
   
   <div class="bio-images">
-    <img src="img/pasta.webp" alt="Foto del restaurante" class="bio-img">
-    <img src="img/marisco.jpg" alt="Paella servida" class="bio-img">
+    <div class="bio-img-wrap">
+      <img src="img/pasta.webp" alt="Foto del restaurante" class="bio-img">
+    </div>
+    <div class="bio-img-wrap">
+      <img src="img/marisco.jpg" alt="Paella servida" class="bio-img">
+    </div>
   </div>
 </section>
 
 
-
+ <!-- LA CARTA -->
 
 <section id="carta2" class="carta2-section">
   <h2 class="carta2-title">LA CARTA</h2>
@@ -62,7 +69,7 @@
   </p>
   <a href="carta.html" class="carta2-btn">VER CARTA</a>
 
-  <div class="carta2-image-wrap">
+  <div class="carta2-img-wrap">
     <img src="img/Captura de pantalla 2025-07-14 014457.webp" alt="Pizza de la carta" class="carta2-img">
   </div>
 </section>
@@ -70,8 +77,42 @@
 
 
 
+ <!-- GALERIA -->
+<section id="galeria" class="galeria-section">
+  <h2 class="galeria-title">GALERIA</h2>
+  <p class="galeria-text">
+    Descubre nuestros espacios para celebrar tus bodas etc etc etc...
+  </p>
 
-  <section id="reservas"></section>
+  <div class="carousel">
+    <div class="carousel-track">
+      <img src="img/plato1.webp" alt="Plato 1" class="carousel-img">
+      <img src="img/plato3.webp" alt="Plato 2" class="carousel-img">
+      <img src="img/plato4.webp" alt="Plato 3" class="carousel-img">
+      <img src="img/plato5.webp" alt="Plato 3" class="carousel-img">
+    </div>
+    <div class="carousel-indicators">
+      <span class="indicator active"></span>
+      <span class="indicator"></span>
+      <span class="indicator"></span>
+      <span class="indicator"></span>
+    </div>
+  </div>
+</section>
+
+
+
+
+ <!-- INFORMACION -->
+
+  <section id="información"></section>
+
+
+
+
+
+
+
 <script src="scripts.js"></script>
 </body>
 </html>

@@ -27,6 +27,19 @@ body.home-page {
   position: sticky;
   top: 0;
   z-index: 100;
+  transition: background-color 0.3s ease; /* para el efecto scrolled */
+}
+body.home-page .header {
+  background-color: #000000;
+}
+
+/* Fondo menos nítido al hacer scroll */
+.header.scrolled {
+   background-color: rgba(135, 100, 69, 0.55); /* más transparente */
+  backdrop-filter: blur(4px); /* efecto cristal */
+}
+body.home-page .header.scrolled {
+  background-color: rgba(0, 0, 0, 0.55); /* negro translúcido */
 }
 
 .header__logo img.logo-img {
@@ -41,6 +54,7 @@ body.home-page {
   gap: 10px;
 }
 
+/* Botón hamburguesa y botón reservar */
 .menu-btn,
 .reservar-btn {
   font-family: 'Righteous', sans-serif;
@@ -52,7 +66,7 @@ body.home-page {
   transition: all 0.3s ease;
 }
 
-/* Botón hamburguesa */
+/* Menú hamburguesa */
 .menu-btn {
   background: transparent;
   color: #EEC373;
@@ -72,7 +86,47 @@ body.home-page {
   background-color: #CA965C;
 }
 
-/* ===== RESPONSIVE HEADER ===== */
+/* Menú desplegable móvil */
+.nav-menu {
+  display: none; 
+  flex-direction: column;
+  gap: 12px;
+  background: rgba(135, 100, 69, 0.85);
+  letter-spacing: 0.2rem;
+  padding: 20px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  border-top: 1px solid rgba(255,255,255,0.2);
+}
+body.home-page .nav-menu {
+  background: rgba(0, 0, 0, 0.85); /* fondo negro solo en home */
+}
+
+.nav-menu a {
+  display: block;                 /* ocupa todo el ancho */
+  width: 100%;                    /* asegura el 100% */
+  padding: 12px 0;                /* espacio arriba y abajo */
+  border-bottom: 2px solid #EEC373; /* línea dorada */
+  color: #EEC373;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.nav-menu a:hover {
+  color: #fff;
+  border-bottom: 2px solid #fff; 
+}
+
+/* Mostrar menú cuando header tiene clase menu-open */
+.header.menu-open .nav-menu {
+  display: flex;
+}
+
+/* ===== RESPONSIVE ===== */
 @media (min-width: 768px) {
   .menu-btn {
     font-size: 16px;
@@ -85,9 +139,39 @@ body.home-page {
 }
 
 @media (min-width: 1024px) {
-  /* En escritorio puedes ocultar hamburguesa y luego mostrar un menú horizontal si quieres */
   .menu-btn {
     display: none;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  /* Nav horizontal sin flex-grow */
+  .nav-menu {
+    display: flex !important;
+    position: static;
+    flex-direction: row;
+    gap: 40px;              /* más aire entre links */
+    background: transparent;
+    padding: 0;
+    border-top: none;
+    margin: 0 auto;         /* centra el nav entre logo y botón */
+  }
+
+  .nav-menu a {
+    display: inline-block;
+    border-bottom: none;   /* quita la línea dorada */
+    padding: 0;
+  }
+
+  .header__actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
 }
 
@@ -95,13 +179,30 @@ body.home-page {
 
 /* ========== HERO SECTION (Home) ========== */
 .home {
-  background: url('/img/tu-imagen-de-fondo.jpg') no-repeat center center;
+  position: relative;
+  background: url('img/hero-restaurante.webp') no-repeat center center;
   background-size: cover;
-  min-height: 100vh; /* Ocupa toda la altura de la ventana */
+  min-height: 85vh;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+.home-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    /* Degradado inferior */
+    linear-gradient(to bottom, rgba(0,0,0,0) 80%, rgba(0,0,0,1) 100%),
+    /* Capa oscura encima de la imagen */
+    linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)),
+    url('img/hero-restaurante.webp') no-repeat center center;
+  background-size: cover;
+  z-index: 1;
 }
 
 .home-content {
@@ -109,13 +210,49 @@ body.home-page {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: relative;
+  z-index: 1;
 }
 
 .logo-home {
-  height: 350px; /* Ajusta el tamaño según prefieras */
+  height: 400px;     
   width: auto;
+  margin-top: -100px; /* 📱 margen base para móvil */
 }
 
+/*  Pantallas medianas en adelante */
+@media (min-width: 768px) {
+   .home-bg {
+    background-size: 100% auto; /* ancho al 120%, alto automático */
+    background-position: center center;
+  }
+  .home {
+    background-position: top center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: #000;
+  }
+  .logo-home {
+    height: 380px;
+    margin-top: -150px;
+  }
+}
+
+/* ====== A partir de 1600px ====== */
+@media (min-width: 1600px) {
+  .home-bg {
+    background-size: 90% auto; /* un poco menos zoom en pantallas enormes */
+    background-position: center center;
+  }
+  .home {
+    background-position: center top;
+    background-size: contain;
+  }
+  .logo-home {
+    height: 500px;
+    margin-top: -180px;
+  }
+}
 
 
 
@@ -124,6 +261,14 @@ body.home-page {
 .titulo-bio{
 color: #EEC373;
 }
+
+
+
+
+
+
+
+
 
 
 

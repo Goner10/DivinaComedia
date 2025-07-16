@@ -743,7 +743,7 @@ body.home-page .nav-menu {
   transform: scale(1.2);
 }
 
-/* Estilos para las imágenes de los iconos */
+
 .info-socials a img {
   width: 42px;      
   height: 42px;     
@@ -766,7 +766,7 @@ body.home-page .nav-menu {
   border-radius: 12px;
   width: 100%;
   max-width: 400px;
-  height: 220px;
+  height: 420px;
 }
 @media (min-width: 1024px) {
   .info-icon {
@@ -783,8 +783,8 @@ body.home-page .nav-menu {
     font-size: 16px;
   }
   .info-map iframe {
-    max-width: 600px;
-    height: 300px;
+    max-width: 400px;
+    height: 500px;
   }
 }
 
@@ -828,6 +828,7 @@ body.home-page .nav-menu {
 
 .social-icons1 {
   margin-top: 20px;
+  
 }
 
 .social-icons1 a {
@@ -836,6 +837,13 @@ body.home-page .nav-menu {
   margin: 0 10px;
   text-decoration: none;
 }
+
+.social-icons1 a img{
+  width: 43px;
+  height: 43px;
+}
+
+
 
 /* ========== CARTA ========== */
 

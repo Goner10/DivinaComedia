@@ -58,7 +58,7 @@ body.home-page .header.scrolled {
 .menu-btn,
 .reservar-btn {
   font-family: 'Righteous', sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: bold;
   border-radius: 4px;
   cursor: pointer;
@@ -234,7 +234,7 @@ body.home-page .nav-menu {
   }
   .logo-home {
     height: 380px;
-    margin-top: -150px;
+    margin-top: -100px;
   }
 }
 
@@ -269,6 +269,7 @@ body.home-page .nav-menu {
   color: #EEC373;
   font-size: 26px;
   margin-bottom: 20px;
+  margin-top: 60px;
   position: relative;
   display: inline-block;
 }
@@ -287,10 +288,10 @@ body.home-page .nav-menu {
 
 .bio-text {
   color: #EEC373;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.6;
   max-width: 300px; 
-  margin: 0 auto 60px auto; /* centrado y espacio inferior */
+  margin: 0 auto 60px auto; 
 }
 
 .bio-images {
@@ -335,22 +336,58 @@ body.home-page .nav-menu {
 }
 
 /* ===== A partir de tablet/desktop ===== */
-@media (min-width: 768px) {
-  .bio-title {
-    font-size: 32px;
+
+@media (min-width: 1024px) {
+  .bio-section {
+    display: flex;
+    align-items: center; 
+    justify-content: space-between; 
+    gap: 100px; 
+    padding: 160px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
   }
-  .bio-title::before,
-  .bio-title::after {
-    width: 60px;
+
+  /* Columna de texto */
+  .bio-section > .bio-title,
+  .bio-section > .bio-text {
+    text-align: left;
   }
-  .bio-text {
-    font-size: 20px;
-    max-width: 600px;
+
+  /* Necesitamos un contenedor para título y texto */
+  .bio-content {
+    flex: 1;
+    max-width: 550px;
   }
+
+  .bio-content h2{
+    font-size: 43px;
+  }
+
+ .bio-content p{
+  font-size: 20px;
+ }
+
+  .bio-images {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 30px; 
+    align-items: center; 
+    max-width: 550px;
+  }
+
   .bio-img {
-    max-width: 500px;
-    height: 400px;
+    width: 100%;
+    max-width: 550px;
+    
+    object-fit: cover;
   }
+
+ .bio-images .bio-img-wrap:nth-child(2) {
+    display: none;
+  }
+
 }
 
 
@@ -385,7 +422,7 @@ body.home-page .nav-menu {
 
 .carta2-text {
   color: #EEC373;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.6;
   max-width: 300px;
   margin: 0 auto 30px auto;
@@ -451,6 +488,64 @@ body.home-page .nav-menu {
   }
 }
 
+@media (min-width: 1024px) {
+  .carta2-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 150px;              /* separación entre imagen y texto */
+    padding: 10px 40px;     /* aire alrededor */
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  /* Imagen a la izquierda */
+  .carta2-img-wrap {
+    order: 1;
+    flex: 1;
+    max-width: 550px;
+    display: flex;
+    justify-content: center; /* centra la imagen dentro de su contenedor */
+  }
+
+  .carta2-img {
+    width: 100%;
+    max-width: 500px;
+ 
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  /* Contenido (título, texto y botón) a la derecha */
+  .carta2-content {
+    order: 2;
+    flex: 1;
+    max-width: 550px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* título y párrafo alineados a la izquierda */
+    gap: 50px; /* separación vertical entre h2, p y botón */
+  }
+
+  .carta2-content h2 {
+    font-size: 43px;
+    margin: 0;
+  }
+
+  .carta2-content p {
+    font-size: 20px;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .carta2-btn {
+    align-self: center; 
+    font-size: 20px;
+    padding: 14px 30px;
+    border-radius: 8px;
+  }
+}
 
 
 /* ===== recuadro amaraillo ===== */
@@ -695,6 +790,8 @@ body.home-page .nav-menu {
 }
 
 
+
+
 /* ========== INFORMACION ========== */
 
 .info-section {
@@ -707,7 +804,7 @@ body.home-page .nav-menu {
 .info-icon {
   width: 100px;
   margin-bottom: 30px;
-  margin-top: -20px;
+  margin-top: 10px;
 }
 
 .info-block {
@@ -745,8 +842,8 @@ body.home-page .nav-menu {
 
 
 .info-socials a img {
-  width: 42px;      
-  height: 42px;     
+  width: 41px;      
+  height: 41px;     
   display: block;   
 }
 
@@ -816,7 +913,7 @@ body.home-page .nav-menu {
 .footer1 {
   background-color: #EEC373;
   color: #000000;
-  padding: 30px 20px;
+  padding:20px 10px;
   text-align: center;
 }
 
@@ -1045,8 +1142,8 @@ body.home-page .nav-menu {
 
 /* ========== FOOTER ========== */
 .footer {
-  background-color: #0F0E0E;
-  color: #EEC373;
+  background-color: #EEC373;
+  color: #000000;
   padding: 30px 20px;
   text-align: center;
 }

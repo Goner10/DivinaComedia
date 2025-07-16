@@ -7,7 +7,7 @@
 body {
   font-family: 'Righteous', sans-serif;
   line-height: 1.6;
-  color: #0F0E0E;
+  color: #000000;
   background-color: #fff;
 }
 body.home-page {
@@ -230,7 +230,7 @@ body.home-page .nav-menu {
     background-position: top center;
     background-size: contain;
     background-repeat: no-repeat;
-    background-color: #000;
+    background-color: #000000;
   }
   .logo-home {
     height: 380px;
@@ -298,13 +298,13 @@ body.home-page .nav-menu {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 100px; 
+  gap: 70px; 
 }
 
 .bio-img {
   width: 100%;
-  max-width: 350px;
-  height: 360px;
+  max-width: 345px;
+  height: 345px;
   object-fit: cover;
   border-radius: 8px;
   display: block;
@@ -324,7 +324,7 @@ body.home-page .nav-menu {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 50%; 
+  height: 70%; 
   background: linear-gradient(
     to bottom,
     rgba(0,0,0,0) 20%,   
@@ -403,7 +403,7 @@ body.home-page .nav-menu {
   font-family: 'Righteous', sans-serif;
   color: #EEC373; /* dorado */
   font-size: 26px;
-  margin-top: 30px;
+  margin-top: 10px;
   margin-bottom: 20px;
   position: relative;
   display: inline-block;
@@ -640,7 +640,7 @@ body.home-page .nav-menu {
 
 .galeria-section {
   background-color: #000;
-  padding: 40px 20px;
+  padding: 20px 20px;
   text-align: center;
 }
 
@@ -648,7 +648,8 @@ body.home-page .nav-menu {
   font-family: 'Righteous', sans-serif;
   color: #EEC373;
   font-size: 26px;
-  
+  margin-top: 10px;
+  margin-bottom: 20px;
   position: relative;
   display: inline-block;
 }
@@ -666,10 +667,10 @@ body.home-page .nav-menu {
 
 .galeria-text {
   color: #EEC373;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.6;
   max-width: 300px;
-  margin: 0 auto 50px auto;
+  margin: 0 auto 80px auto;
 }
 
 /* === Carrusel === */
@@ -688,7 +689,7 @@ body.home-page .nav-menu {
 
 .carousel-img {
   min-width: 100%;
-  height: 430px; /* ajusta a tus imágenes */
+  height: 430px; 
   object-fit:cover;
   display: block;
   filter: brightness(0.85);
@@ -803,8 +804,9 @@ body.home-page .nav-menu {
 
 .info-icon {
   width: 100px;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
   margin-top: 10px;
+  text-align: center;
 }
 
 .info-block {
@@ -814,20 +816,23 @@ body.home-page .nav-menu {
 .info-block h3 {
   font-family: 'Righteous', sans-serif;
   font-size: 23px;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   letter-spacing: 0.5px;
+  margin-left: 10px;
 }
 
 .info-block p {
   font-size: 16px;
   line-height: 1.4;
+  margin-left: 10px;
 }
 
 .info-socials {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 25px;
   margin-top: 10px;
+  margin-right: 20px;
 }
 
 
@@ -842,8 +847,9 @@ body.home-page .nav-menu {
 
 
 .info-socials a img {
-  width: 41px;      
-  height: 41px;     
+  margin-top: -10px;
+  width: 40px;      
+  height: 40px;     
   display: block;   
 }
 
@@ -854,8 +860,8 @@ body.home-page .nav-menu {
 }
 
 .info-logo {
-  width: 230px;
-  margin: 60px auto 20px auto;
+  width: 250px;
+  margin: 60px auto 30px auto;
   display: block;
 }
 
@@ -865,6 +871,14 @@ body.home-page .nav-menu {
   max-width: 400px;
   height: 420px;
 }
+
+.info-blocks {
+  text-align: left;
+  max-width: 400px;
+  margin: 0 auto 40px auto;
+}
+
+
 @media (min-width: 1024px) {
   .info-icon {
   width: 150px;
@@ -874,10 +888,10 @@ body.home-page .nav-menu {
     padding: 60px 40px;
   }
   .info-block h3 {
-    font-size: 20px;
+    font-size: 26px;
   }
   .info-block p {
-    font-size: 16px;
+    font-size: 20px;
   }
   .info-map iframe {
     max-width: 400px;
@@ -913,7 +927,7 @@ body.home-page .nav-menu {
 .footer1 {
   background-color: #EEC373;
   color: #000000;
-  padding:20px 10px;
+  padding:5px 10px;
   text-align: center;
 }
 
@@ -921,6 +935,7 @@ body.home-page .nav-menu {
 .footer1 p {
   font-size: 16px;
   margin-bottom: 10px;
+  margin-top: 15px;
 }
 
 .social-icons1 {
@@ -1140,11 +1155,14 @@ body.home-page .nav-menu {
   font-weight: bold;
 }
 
+
+
+
 /* ========== FOOTER ========== */
 .footer {
   background-color: #EEC373;
   color: #000000;
-  padding: 30px 20px;
+  padding: 5px 10px;
   text-align: center;
 }
 
@@ -1154,8 +1172,9 @@ body.home-page .nav-menu {
 }
 
 .footer p {
-  font-size: 14px;
+    font-size: 16px;
   margin-bottom: 10px;
+  margin-top: 15px;
 }
 
 .social-icons {

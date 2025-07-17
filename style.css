@@ -111,6 +111,7 @@ body.home-page .nav-menu {
   border-bottom: 2px solid #EEC373; 
   color: #EEC373;
   text-decoration: none;
+  background: transparent;
   font-weight: bold;
   font-size: 16px;
   transition: color 0.3s ease;
@@ -147,15 +148,18 @@ body.home-page .nav-menu {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: relative;
+    position: sticky;
+    top: 0;
+    z-index: 100;
   }
+
 
   /* Nav horizontal sin flex-grow */
   .nav-menu {
     display: flex !important;
     position: static;
     flex-direction: row;
-    gap: 40px;              /* más aire entre links */
+    gap: 40px;              
     background: transparent;
     padding: 0;
     border-top: none;
@@ -716,36 +720,49 @@ body.home-page .nav-menu {
 }
 
 @media (min-width: 1024px) {
-  /* Secciones más anchas y tipografías mayores */
-  .bio-img {
-    max-width: 500px;
-    height: 400px;
+  .galeria-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+              
+    max-width: 1000px;     
+    margin: 0 auto;
+    padding: 80px 40px;    /* aire alrededor */
+    text-align: left;      /* texto alineado a la izquierda */
   }
 
-  .carta2-img {
-    max-width: 700px;
-    height: 600px;
+  
+  .galeria-content {
+    flex: 1;
+    max-width: 550px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start; 
+    margin-left: 30px;
   }
 
-  .bio-text,
-  .carta2-text,
-  .galeria-text {
-    font-size: 18px;
-    max-width: 600px;
+  .galeria-content .galeria-title {
+    font-size: 43px;
+    margin: 0;
   }
 
-  .bio-title,
-  .carta2-title,
-  .galeria-title {
-    font-size: 32px;
+  .galeria-content .galeria-text {
+    font-size: 20px;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Contenedor para el carrusel */
+  .galeria-carousel-wrap {
+    flex: 1;
+    max-width: 550px;
+    display: flex;
+    justify-content: center; /* centra el carrusel */
   }
 
   .carousel {
-    max-width: 600px; /* carrusel más grande en laptops */
-  }
-
-  .carousel-img {
-    height: 500px; /* más alto */
+    margin: 0; /* quita márgenes auto del modo móvil */
   }
 }
 @media (min-width: 1600px) {

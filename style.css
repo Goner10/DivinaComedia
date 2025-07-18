@@ -393,6 +393,21 @@ body.home-page .nav-menu {
   }
 
 }
+@media (min-width: 1600px) {
+   .bio-section {
+    display: flex;
+    align-items: center; 
+    justify-content: space-between; 
+    gap: 200px; 
+    padding: 160px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+ .bio-img {
+    max-width: 700px;
+    height: 500px;
+  }
+}
 
 
 /* ========== CARTA HOME ========== */
@@ -497,31 +512,31 @@ body.home-page .nav-menu {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 150px;              /* separación entre imagen y texto */
+    gap: 100px;              /* separación entre imagen y texto */
     padding: 10px 40px;     /* aire alrededor */
     max-width: 1200px;
     margin: 0 auto;
     text-align: left;
   }
 
-  /* Imagen a la izquierda */
+  
   .carta2-img-wrap {
     order: 1;
     flex: 1;
     max-width: 550px;
     display: flex;
-    justify-content: center; /* centra la imagen dentro de su contenedor */
+    justify-content: center; 
   }
 
   .carta2-img {
     width: 100%;
-    max-width: 500px;
- 
+    max-width: 400px;
+     height: 400px;
     object-fit: cover;
     border-radius: 8px;
   }
 
-  /* Contenido (título, texto y botón) a la derecha */
+  
   .carta2-content {
     order: 2;
     flex: 1;
@@ -529,7 +544,7 @@ body.home-page .nav-menu {
     display: flex;
     flex-direction: column;
     align-items: flex-start; /* título y párrafo alineados a la izquierda */
-    gap: 50px; /* separación vertical entre h2, p y botón */
+    gap: 30px; /* separación vertical entre h2, p y botón */
   }
 
   .carta2-content h2 {
@@ -548,9 +563,39 @@ body.home-page .nav-menu {
     font-size: 20px;
     padding: 14px 30px;
     border-radius: 8px;
+    margin-right: 100px;
   }
 }
-
+@media (min-width: 1600px) {
+  .carta2-content {
+    order: 2;
+    flex: 1;
+    max-width: 750px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* título y párrafo alineados a la izquierda */
+    gap: 50px; /* separación vertical entre h2, p y botón */
+  }
+   .carta2-content h2 {
+    font-size: 43px;
+    margin: 0;
+    margin-left: 80px;
+  }
+    .carta2-img-wrap {
+    order: 1;
+    flex: 1;
+    max-width: 400px;
+    display: flex;
+    justify-content: center; 
+  }
+    .carta2-img {
+    width: 100%;
+    max-width: 100px;
+     height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+}
 
 /* ===== recuadro amaraillo ===== */
 
@@ -767,14 +812,10 @@ body.home-page .nav-menu {
 }
 @media (min-width: 1600px) {
   body {
-    font-size: 18px; /* texto más grande en general */
+    font-size: 18px; 
   }
 
-  .bio-img {
-    max-width: 700px;
-    height: 500px;
-  }
-
+ 
   .carta2-img {
     max-width: 900px;
     height: 700px;
@@ -794,7 +835,7 @@ body.home-page .nav-menu {
   }
 
   .carousel {
-    max-width: 800px; /* carrusel muy grande */
+    max-width: 500px; /* carrusel muy grande */
   }
 
   .carousel-img {
@@ -897,12 +938,42 @@ body.home-page .nav-menu {
 
 
 @media (min-width: 1024px) {
-  .info-icon {
-  width: 150px;
-  margin-bottom: 50px;
-}
+  /* contenedor principal en dos columnas */
   .info-section {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    
     padding: 60px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  
+  .info-content {
+    order: 2;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;              /* espacio vertical interno */
+    max-width: 550px;
+  }
+
+  /* columna del mapa */
+  .info-map {
+    order: 1;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* ajustes de elementos internos */
+  .info-icon {
+    width: 100px;
+    margin-bottom: 40px;
+    margin-left: 220px;
+    margin-top: -60px;
   }
   .info-block h3 {
     font-size: 26px;
@@ -912,31 +983,52 @@ body.home-page .nav-menu {
   }
   .info-map iframe {
     max-width: 400px;
-    height: 500px;
+    height: 630px;
+    border-radius: 12px;
   }
+  .info-socials {
+  gap: 25px;
+  margin-top: -30px;
+  margin-right: 20px;
+  
+}
+
+  .info-logo {
+  display: none;
+}
 }
 
 @media (min-width: 1600px) {
-  .info-icon {
-  width: 250px;
-  margin-bottom: 100px;
-}
+  
   .info-section {
     padding: 80px 60px;
+    gap: 200px;
+  }
+  .info-icon {
+    width: 150px;
+    margin-bottom: 30px;
   }
   .info-block h3 {
-    font-size: 22px;
+    font-size: 28px;
   }
   .info-block p {
-    font-size: 18px;
+    font-size: 22px;
   }
-  .info-map iframe {
-    max-width: 800px;
-    height: 350px;
- 
- }
+  .info-socials {
+  gap: 25px;
+  margin-top: -30px;
+  margin-left: 150px; 
+}
+.info-socials a img {
+  width: 60px;
+  height: 60px;
 }
 
+  .info-map iframe {
+    max-width: 800px;
+    height: 780px;
+  }
+}
 
 
 /* ======== FOOTER 1========*/

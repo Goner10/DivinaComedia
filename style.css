@@ -974,6 +974,35 @@ body.home-page .nav-menu {
 
 
 
+
+
+/* ========== PAGINA RESERVAS  ========== */
+
+
+
+.titulo-reservas{
+margin-top: 33px;
+color: #876445;
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 23px;
+}
+
+
+.titulo-reservas::before,
+.titulo-reservas::after {
+  content: '';
+  display: inline-block;
+  width: 40px;
+  height: 2px;
+  background-color: #EEC373;
+  vertical-align: middle;
+  margin: 0 10px;
+}
+
+
+
 /* ========== CARTA ========== */
 
 

@@ -95,10 +95,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==== Swipe (deslizar) ====
     let startX = 0;
     let endX = 0;
-    const swipeThreshold = 50; // mínimo en px para considerar swipe
+    const swipeThreshold = 50; 
 
     track.addEventListener('touchstart', (e) => {
-      clearInterval(autoSlide); // detiene auto-slide mientras toca
+      clearInterval(autoSlide); 
       startX = e.touches[0].clientX;
     });
 
@@ -110,10 +110,10 @@ document.addEventListener('DOMContentLoaded', () => {
       let diff = endX - startX;
       if (Math.abs(diff) > swipeThreshold) {
         if (diff > 0) {
-          // swipe a la derecha → imagen anterior
+          // swipe a la derecha 
           currentIndex = (currentIndex - 1 + indicators.length) % indicators.length;
         } else {
-          // swipe a la izquierda → siguiente imagen
+          // swipe a la izquierda
           currentIndex = (currentIndex + 1) % indicators.length;
         }
         updateCarousel();
@@ -122,5 +122,31 @@ document.addEventListener('DOMContentLoaded', () => {
       autoSlide = setInterval(nextSlide, 4000);
     });
   }
+
+
+
+
+  // === Language toggle entre español e ingles ===
+  const langToggleBtn = document.getElementById('lang-toggle');
+  const langText = document.getElementById('lang-text');
+  if (!langToggleBtn || !langText) return;
+
+  // Inicializa el texto correcto
+  function updateLangToggle() {
+    const isEnglish = document.documentElement.lang === 'en';
+    // Sólo cambiamos el texto dentro del <span>
+    langText.textContent = isEnglish ? 'ES' : 'EN';
+    // Y actualizamos el aria-label si quieres:
+    langToggleBtn.setAttribute('aria-label',
+      isEnglish ? 'Cambiar a Español' : 'Switch to English'
+    );
+  }
+
+  langToggleBtn.addEventListener('click', () => {
+    const isEnglish = document.documentElement.lang === 'en';
+    window.location.href = isEnglish ? 'carta.html' : 'carta-en.html';
+  });
+
+  updateLangToggle();
 
 });

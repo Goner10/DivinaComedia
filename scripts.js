@@ -92,7 +92,6 @@ document.addEventListener('DOMContentLoaded', () => {
       updateCarousel();
     }
 
-    // ==== Swipe (deslizar) ====
     let startX = 0;
     let endX = 0;
     const swipeThreshold = 50; 
@@ -118,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         updateCarousel();
       }
-      // reiniciar auto-slide
+      
       autoSlide = setInterval(nextSlide, 4000);
     });
   }
@@ -131,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const langText = document.getElementById('lang-text');
   if (!langToggleBtn || !langText) return;
 
-  // Inicializa el texto correcto
+  
   function updateLangToggle() {
     const isEnglish = document.documentElement.lang === 'en';
     // Sólo cambiamos el texto dentro del <span>

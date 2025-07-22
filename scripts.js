@@ -95,4 +95,19 @@ document.addEventListener('DOMContentLoaded', () => {
     updateLangToggle();
   }
 
+
+ const bioSection = document.querySelector('.bio-section');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        bioSection.classList.add('animate');
+        observer.unobserve(bioSection); // solo una vez
+      }
+    });
+  }, { threshold: 0.3 }); // anima cuando 30% visible
+
+  observer.observe(bioSection);
+
+
 }); 

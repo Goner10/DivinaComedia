@@ -96,18 +96,25 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
- const bioSection = document.querySelector('.bio-section');
+const bioSections = document.querySelectorAll('.bio-section');
 
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        bioSection.classList.add('animate');
-        observer.unobserve(bioSection); // solo una vez
-      }
-    });
-  }, { threshold: 0.3 }); // anima cuando 30% visible
+const observer = new IntersectionObserver((entries, obs) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      // al entrar en viewport dispara la animación
+      entry.target.classList.add('animate');
+      // dejamos de observarla para que no vuelva a dispararse
+      obs.unobserve(entry.target);
+    }
+  });
+}, {
+  // dispara cuando el elemento está 100px antes de entrar en el viewport
+  rootMargin: '0px 0px -100px 0px',
+  threshold: 0
+});
 
-  observer.observe(bioSection);
+// arrancamos la observación
+bioSections.forEach(section => observer.observe(section));
 
 
 }); 

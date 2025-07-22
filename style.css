@@ -352,13 +352,11 @@ body.home-page .nav-menu {
     margin: 0 auto;
   }
 
-  /* Columna de texto */
   .bio-section > .bio-title,
   .bio-section > .bio-text {
     text-align: left;
   }
 
-  /* Necesitamos un contenedor para título y texto */
   .bio-content {
     flex: 1;
     max-width: 550px;
@@ -378,13 +376,13 @@ body.home-page .nav-menu {
     flex-direction: column;
     gap: 30px; 
     align-items: center; 
-    max-width: 550px;
+    max-width: 750px;
   }
 
   .bio-img {
     width: 100%;
-    max-width: 550px;
-    
+    max-width: 750px;
+    height: 450px;
     object-fit: cover;
   }
 
@@ -488,6 +486,7 @@ body.home-page .nav-menu {
 @media (min-width: 768px) {
   .carta2-title {
     font-size: 32px;
+  
   }
   .carta2-title::before,
   .carta2-title::after {
@@ -519,6 +518,7 @@ body.home-page .nav-menu {
     text-align: left;
   }
 
+
   
   .carta2-img-wrap {
     order: 1;
@@ -543,8 +543,8 @@ body.home-page .nav-menu {
     max-width: 550px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* título y párrafo alineados a la izquierda */
-    gap: 30px; /* separación vertical entre h2, p y botón */
+    align-items: flex-start; 
+    gap: 30px;
   }
 
   .carta2-content h2 {
@@ -643,9 +643,9 @@ body.home-page .nav-menu {
 
 @media (min-width: 1024px) {
   .reserva-cta {
-    margin: 60px auto; /* más separación arriba/abajo, centrado automático */
+    margin: 100px auto; 
     max-width: 700px;  /* un ancho un poquito más controlado */
-    padding: 30px 40px; /* más aire interno en pantallas grandes */
+    padding: 30px 40px; 
   }
 
   .reserva-title {
@@ -1326,6 +1326,47 @@ font-size: 23px;
 }
 
 
+
+/* ========== WHATSAPP ========== */
+
+.whatsapp-reservation {
+  background-color: #f9f9f9;
+  border: 2px dashed #EEC373;
+  padding: 3.5rem;
+  text-align: center;
+  border-radius: 8px;
+  margin: 2rem auto;
+  max-width: 400px;
+}
+
+.whatsapp-reservation p {
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #F4DFBA;
+  color: #000000;
+  text-decoration: none;
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  border: 1px solid #876445;
+}
+
+
+
+.whatsapp-icon {
+  width: 2.8em;
+  height: auto;
+  display: inline-block;
+}
 
 
 

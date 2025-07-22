@@ -25,7 +25,11 @@
   </nav>
 
   <div class="header__actions">
-    <button class="menu-btn" aria-label="Abrir menú">☰</button>
+     <button class="menu-btn" aria-label="Abrir menú">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
     <a href="reservas.html" class="reservar-btn">RESERVAR</a>
   </div>
 </header>
@@ -58,7 +62,7 @@
     <div class="bio-img-wrap" data-aos="zoom-in" data-aos-delay="300">
       <img src="img/image (1).webp" alt="Foto del restaurante" class="bio-img">
     </div>
-    <div class="bio-img-wrap" data-aos="zoom-in" data-aos-delay="400">
+    <div class="bio-img-wrap" data-aos="zoom-in" data-aos-delay="350">
       <img src="img/gambas.webp" alt="Paella servida" class="bio-img">
     </div>
   </div>
@@ -79,7 +83,7 @@
       repleta de sabores frescos y auténticos….
     </p>
 
-    <a href="carta.html" class="carta2-btn" data-aos="flip-up" data-aos-delay="300">VER CARTA</a>
+    <a href="carta.html" class="carta2-btn" data-aos="flip-up" data-aos-delay="200">VER CARTA</a>
   </div>
     <div class="carta2-img-wrap" data-aos="fade-right" data-aos-delay="400">
     <img src="img/ensalada.webp" alt="Ensalada variada" class="carta2-img">
@@ -155,12 +159,12 @@
       <h3>HORARIO</h3>
       <p>De Lunes a Domingo de 12:00pm a 12am</p>
     </div>
-     <div class="info-block" data-aos="fade-right" data-aos-delay="500">
+     <div class="info-block" data-aos="fade-right" data-aos-delay="450">
     <h3>SÍGUENOS Y DÉJANOS TUS COMENTARIOS</h3>
     </div>
   </div>
 
-  <div class="info-block" data-aos="fade-right" data-aos-delay="600">
+  <div class="info-block" data-aos="fade-right" data-aos-delay="500">
     
     <div class="info-socials">
 
@@ -211,11 +215,14 @@
 
   <!-- Inicialización de AOS -->
   <script>
-    AOS.init({
-      duration: 800,
-      once: true
-    });
-  </script>
+  AOS.init({
+    offset: 0,                    
+    duration: 800,
+    easing: 'ease-out',
+    once: true,                   
+    anchorPlacement: 'top-center' // dispara cuando la parte superior del elemento toca el centro del viewport
+  });
+</script>
 
 <script src="scripts.js"></script>
 </body>

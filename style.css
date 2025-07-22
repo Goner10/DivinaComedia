@@ -17,6 +17,8 @@ body.home-page {
 
 
 
+
+
 /* ========== HEADER ========== */
 .header {
   background-color: #876445;
@@ -27,15 +29,16 @@ body.home-page {
   position: sticky;
   top: 0;
   z-index: 100;
-  transition: background-color 0.3s ease; /* para el efecto scrolled */
+  transition: background-color 0.1s ease; 
 }
 body.home-page .header {
+  
   background-color: #000000;
 }
 
-/* Fondo menos nítido al hacer scroll */
+
 .header.scrolled {
-   background-color: rgba(135, 100, 69, 0.55); /* más transparente */
+   background-color: rgba(135, 100, 69, 0.55); 
   backdrop-filter: blur(4px); /* efecto cristal */
 }
 body.home-page .header.scrolled {
@@ -66,15 +69,38 @@ body.home-page .header.scrolled {
   transition: all 0.3s ease;
 }
 
-/* Menú hamburguesa */
 .menu-btn {
-  background: transparent;
-  color: #EEC373;
-  border: 2px solid #EEC373;
-  padding: 8px 12px;
+  width: 28px;
+  height: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  z-index: 200; 
+  margin-right: 20px;
+  
 }
 
-/* Botón reservar */
+
+.menu-btn span {
+  display: block;
+  height: 3px;
+  background-color: #EEC373;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.header.menu-open .menu-btn span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+.header.menu-open .menu-btn span:nth-child(2) {
+  opacity: 0;
+}
+.header.menu-open .menu-btn span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
 .reservar-btn {
   background-color: #EEC373;
   color: #0F0E0E;
@@ -86,7 +112,7 @@ body.home-page .header.scrolled {
   background-color: #CA965C;
 }
 
-/* Menú desplegable móvil */
+
 .nav-menu {
   display: none; 
   flex-direction: column;
@@ -101,11 +127,11 @@ body.home-page .header.scrolled {
   border-top: 1px solid rgba(255,255,255,0.2);
 }
 body.home-page .nav-menu {
-  background: rgba(0, 0, 0, 0.85); /* fondo negro solo en home */
+  background: rgba(0, 0, 0, 0.85);
 }
 
 .nav-menu a {
-  display: block;                 /* ocupa todo el ancho */
+  display: block;           
   width: 100%;                    
   padding: 12px 0;                
   border-bottom: 2px solid #EEC373; 
@@ -216,6 +242,10 @@ body.home-page .nav-menu {
   flex-direction: column;
   position: relative;
   z-index: 1;
+}
+@keyframes zoomIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
 }
 
 .logo-home {

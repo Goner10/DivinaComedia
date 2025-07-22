@@ -175,9 +175,25 @@ body.home-page .nav-menu {
 /* ===== RESPONSIVE ===== */
 @media (min-width: 768px) {
   .menu-btn {
-    font-size: 16px;
-    padding: 10px 14px;
+     width: 28px;
+  height: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  z-index: 200; 
+  margin-right: 20px;
   }
+  .menu-btn span {
+  display: block;
+  height: 3px;
+  background-color: #EEC373;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
   .reservar-btn {
     font-size: 16px;
     padding: 10px 20px;
@@ -338,7 +354,7 @@ body.home-page .nav-menu {
   padding: 40px 20px;
   text-align: center;
  opacity: 0; /* invisible por defecto */
-  transition: opacity 1.5s ease-out, transform 1s ease-out;
+  transition: opacity 1s ease-out, transform 1s ease-out;
   transform: translateY(30px);
 }
 .bio-section.animate {

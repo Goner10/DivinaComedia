@@ -307,8 +307,8 @@ body.home-page .nav-menu {
 
 .bio-img {
   width: 100%;
-  max-width: 445px;
-  height: 440px;
+  max-width: 335px;
+  height: 385px;
   object-fit: cover;
   border-radius: 8px;
   display: block;
@@ -1337,7 +1337,7 @@ font-size: 23px;
   border-radius: 8px;
   margin: 2rem auto;
   max-width: 400px;
-  margin-bottom: 250px;
+  margin-bottom: 210px;
 }
 
 .whatsapp-reservation p {

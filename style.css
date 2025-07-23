@@ -42,6 +42,16 @@ body.home-page {
     transform: translateY(0);
   }
 }
+@keyframes slideInRightLarge {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 
 
 /* ========== HEADER ========== */
@@ -517,16 +527,21 @@ body.home-page .nav-menu {
 /* ========== CARTA HOME ========== */
 
 .carta2-section {
-  background-color: #000; /* fondo negro */
+  background-color: #000000; 
   padding: 40px 20px;
   text-align: center;
+  opacity: 0;
+  transform: translateY(100px);
+}
+.carta2-section.animate {
+  animation: fadeInUpLarge 1.3s ease-out forwards;
 }
 
 .carta2-title {
   font-family: 'Righteous', sans-serif;
-  color: #EEC373; /* dorado */
+  color: #EEC373;
   font-size: 28px;
-  margin-top: 10px;
+  margin-top: -10px;
   margin-bottom: 20px;
   position: relative;
   display: inline-block;
@@ -549,6 +564,7 @@ body.home-page .nav-menu {
   line-height: 1.6;
   max-width: 300px;
   margin: 0 auto 30px auto;
+  margin-bottom: 30px;
 }
 
 .carta2-btn {
@@ -713,6 +729,11 @@ body.home-page .nav-menu {
   margin: 40px 20px;           
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    opacity: 0;
+  transform: translateY(100px);
+}
+.reserva-cta.animate {
+  animation: fadeInUpLarge 1s ease-out forwards;
 }
 
 .reserva-title {
@@ -794,10 +815,17 @@ body.home-page .nav-menu {
 
 
 .galeria-section {
-  background-color: #000;
+  background-color: #000000;
   padding: 20px 20px;
   text-align: center;
+  opacity: 0;
+  transform: translateY(100px);
 }
+.galeria-section.animate {
+  animation: fadeInUpLarge 1.2s ease-out forwards;
+ 
+}
+
 
 .galeria-title {
   font-family: 'Righteous', sans-serif;
@@ -968,6 +996,13 @@ body.home-page .nav-menu {
   color: #EEC373;
   text-align: center;
   padding: 40px 20px;
+   opacity: 0;
+  transform: translateY(100px);
+}
+.info-section.animate {
+  animation: fadeInUpLarge 1s ease-out forwards;
+  /* opcional, si quieres que aparezca un pelín después:
+     animation-delay: 0.1s; */
 }
 
 .info-icon {

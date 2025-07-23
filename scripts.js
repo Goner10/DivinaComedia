@@ -96,25 +96,23 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-const bioSections = document.querySelectorAll('.bio-section');
+const sectionsToAnimate = document.querySelectorAll('.bio-section, .carta2-section, .reserva-cta, .galeria-section, .info-section');
 
 const observer = new IntersectionObserver((entries, obs) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       // al entrar en viewport dispara la animación
       entry.target.classList.add('animate');
-      // dejamos de observarla para que no vuelva a dispararse
+      // dejamos de observarla 
       obs.unobserve(entry.target);
     }
   });
 }, {
-  // dispara cuando el elemento está 100px antes de entrar en el viewport
+  
   rootMargin: '0px 0px -100px 0px',
   threshold: 0
 });
-
-// arrancamos la observación
-bioSections.forEach(section => observer.observe(section));
+sectionsToAnimate.forEach(section => observer.observe(section));
 
 
 }); 

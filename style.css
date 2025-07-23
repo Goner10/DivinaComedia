@@ -52,6 +52,16 @@ body.home-page {
     transform: translateX(0);
   }
 }
+@keyframes slideFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 
 /* ========== HEADER ========== */
@@ -1301,15 +1311,29 @@ body.home-page .nav-menu {
 
 /* ========== PAGINA RESERVAS  ========== */
 
+.imagen-reservas {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  margin-bottom: 50px;
+}
 
+.imagen-reservas img {
+  max-width: 100%;
+  height: 550px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  animation: slideFadeIn 1.5s ease-out forwards;
+}
 
 .titulo-reservas{
-margin-top: 33px;
+margin-top: 60px;
 color: #876445;
 display: flex;
 justify-content: center;
 align-items: center;
 font-size: 26px;
+animation: slideFadeIn 1s ease-out forwards;
 }
 
 
@@ -1325,6 +1349,127 @@ font-size: 26px;
 }
 
 
+  
+.whatsapp-reservation {
+  background-color:  #FAEFE0;
+  border: 2px dashed #EEC373;
+  padding: 3rem;
+  text-align: center;
+  border-radius: 8px;
+  margin: 2rem auto;
+  max-width: 370px;
+  margin-bottom: 60px;
+  animation: slideFadeIn 1s ease-out forwards;
+}
+
+
+.whatsapp-reservation p {
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #F4DFBA;
+  color: #000000;
+  text-decoration: none;
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  border: 1px solid #876445;
+}
+
+
+
+.whatsapp-icon {
+  width: 2.8em;
+  height: auto;
+  display: inline-block;
+}
+.reserva-cta-extra {
+  background-color: #FAEFE0;           
+  border: 2px dashed #EEC373;          
+  padding: 3.5rem;                    
+  text-align: center;
+  border-radius: 8px;                 
+  margin: 2rem auto;                   
+  max-width: 370px;                    
+  margin-bottom: 100px;                
+  animation: slideFadeIn 1.2s ease-out forwards;
+}
+.reserva-cta-extra h2 {
+  font-family: 'Righteous', sans-serif;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.reserva-cta-extra p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.reserva-extra-btn {
+  display: inline-block;
+  background-color: #F4DFBA;
+  color: #000000;
+  text-decoration: none;
+  font-family: 'Righteous', sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 1px solid #876445;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.reserva-extra-btn:hover {
+  background-color: #333;
+  transform: scale(1.05);
+}
+
+@media (min-width: 1024px) {
+  .reservas-layout {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px; /* espacio entre bloques y la imagen */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+
+  .reservas-bloques {
+    flex: 1;
+    display: flex;
+    gap: 100px; 
+    justify-content: center;
+    margin-bottom: 50px;
+  }
+
+  .whatsapp-reservation,
+  .reserva-cta-extra {
+    flex: 1;
+    margin: 0;
+    max-width: 350px;
+  }
+
+  .imagen-reservas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .imagen-reservas img {
+    max-width: 100%;
+    width: 830px;
+    height: 520px;
+  }
+}
 
 /* ========== CARTA ========== */
 
@@ -1558,47 +1703,9 @@ font-size: 26px;
 
 
 
-/* ========== WHATSAPP ========== */
-
-.whatsapp-reservation {
-  background-color: #f9f9f9;
-  border: 2px dashed #EEC373;
-  padding: 3.5rem;
-  text-align: center;
-  border-radius: 8px;
-  margin: 2rem auto;
-  max-width: 400px;
-  margin-bottom: 210px;
-}
-
-.whatsapp-reservation p {
-  margin-bottom: 1.5rem;
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #333;
-}
-
-.whatsapp-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background-color: #F4DFBA;
-  color: #000000;
-  text-decoration: none;
-  padding: 0.75rem 1.25rem;
-  font-size: 1rem;
-  font-weight: bold;
-  border-radius: 8px;
-  border: 1px solid #876445;
-}
 
 
 
-.whatsapp-icon {
-  width: 2.8em;
-  height: auto;
-  display: inline-block;
-}
 
 
 

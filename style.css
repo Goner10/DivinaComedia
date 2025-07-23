@@ -196,28 +196,37 @@ body.home-page .nav-menu {
   display: flex;
 }
 
-/* ===== RESPONSIVE ===== */
+
 @media (min-width: 768px) {
-  .menu-btn {
-     width: 28px;
-  height: 22px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  z-index: 200; 
-  margin-right: 20px;
+  /* Cabecera con fondo semitransparente + blur */
+  .header {
+    background-color: rgba(135, 100, 69, 0.85);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
   }
+
+  .menu-btn {
+    width: 28px;
+    height: 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    z-index: 200; 
+    margin-right: 20px;
+  }
+
   .menu-btn span {
-  display: block;
-  height: 3px;
-  background-color: #EEC373;
-  border-radius: 2px;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
+    display: block;
+    height: 3px;
+    background-color: #EEC373;
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
   .reservar-btn {
     font-size: 16px;
     padding: 10px 20px;
@@ -225,42 +234,48 @@ body.home-page .nav-menu {
 }
 
 @media (min-width: 1024px) {
-  .menu-btn {
-    display: none;
-  }
-
   .header {
+    
     display: flex;
     align-items: center;
     justify-content: space-between;
     position: sticky;
     top: 0;
     z-index: 100;
+    background-color: rgba(135,100,69,0.85);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
   }
 
-
-  /* Nav horizontal sin flex-grow */
+ 
   .nav-menu {
     display: flex !important;
     position: static;
     flex-direction: row;
-    gap: 40px;              
-    background: transparent;
+    gap: 40px;
+    background: transparent !important;
     padding: 0;
     border-top: none;
-    margin: 0 auto;        
+    margin: 0 auto;
+   
   }
 
   .nav-menu a {
     display: inline-block;
-    border-bottom: none;   
+    border-bottom: none;
     padding: 0;
+    /* nos aseguramos de quitar fondo de los enlaces */
+    background: transparent !important;
   }
 
   .header__actions {
     display: flex;
     align-items: center;
     gap: 10px;
+  }
+
+  .menu-btn {
+    display: none;
   }
 }
 
@@ -456,7 +471,44 @@ body.home-page .nav-menu {
 }
 
 /* ===== A partir de tablet/desktop ===== */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .bio-section {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 40px;           
+    padding: 80px 20px;    
+    max-width: 900px;
+    margin: 0 auto;
+  }
 
+ 
+  .bio-content {
+    flex: 1;
+    max-width: 45%;      
+  }
+
+  .bio-content h2 {
+    font-size: 36px;
+  }
+  .bio-content p {
+    font-size: 18px;
+  }
+
+  .bio-images {
+    flex: 1;
+    max-width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .bio-images .bio-img-wrap:nth-child(2) {
+    display: none;
+  }
+}
 @media (min-width: 1024px) {
   .bio-section {
     display: flex;
@@ -605,26 +657,62 @@ body.home-page .nav-menu {
 
 
 /* ===== A partir de tablet/desktop ===== */
-@media (min-width: 768px) {
-  .carta2-title {
-    font-size: 32px;
-  
+@media (min-width: 768px) and (max-width: 1023px) {
+  .carta2-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 150px;              
+    padding: 20px 30px;   
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: left;
   }
-  .carta2-title::before,
-  .carta2-title::after {
-    width: 60px;
+
+  .carta2-img-wrap {
+    order: 1;
+    flex: 1;
+    max-width: 45%;
+    display: flex;
+    justify-content: center;
   }
-  .carta2-text {
-    font-size: 20px;
-    max-width: 600px;
-  }
+
   .carta2-img {
-    max-width: 700px;
-    height: 600px;
+    width: 100%;
+    max-width: 350px;       
+    height: 380px;
+    border-radius: 8px;
   }
+
+  .carta2-content {
+    order: 2;
+    flex: 1;
+    max-width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;              
+  }
+
+  .carta2-content h2 {
+    font-size: 36px;        
+    margin: 0;
+  }
+
+  .carta2-content p {
+    font-size: 18px;        
+    line-height: 1.6;
+    margin: 0;
+  }
+
   .carta2-btn {
-    font-size: 20px;
+    align-self: flex-start;  
+    font-size: 18px;
     padding: 12px 24px;
+    border-radius: 8px;
+    margin: 0;
+    margin-left: 80px;
   }
 }
 
@@ -633,8 +721,8 @@ body.home-page .nav-menu {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 100px;              /* separación entre imagen y texto */
-    padding: 10px 40px;     /* aire alrededor */
+    gap: 100px;            
+    padding: 10px 40px;  
     max-width: 1200px;
     margin: 0 auto;
     text-align: left;
@@ -695,8 +783,8 @@ body.home-page .nav-menu {
     max-width: 750px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* título y párrafo alineados a la izquierda */
-    gap: 50px; /* separación vertical entre h2, p y botón */
+    align-items: flex-start; 
+    gap: 50px; 
   }
    .carta2-content h2 {
     font-size: 43px;
@@ -725,7 +813,7 @@ body.home-page .nav-menu {
   background-color: #EEC373; 
   color: #0F0E0E;
   text-align: center;
-  padding: 25px 15px;          /* espacio interno */
+  padding: 25px 15px;         
   margin: 40px 20px;           
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
@@ -737,7 +825,7 @@ body.home-page .nav-menu {
 }
 
 .reserva-title {
-  font-family: 'Righteous', serif; /* puedes usar la fuente que prefieras */
+  font-family: 'Righteous', serif;
   font-size: 22px;
   margin-bottom: 10px;
   letter-spacing: 0.5px;
@@ -771,7 +859,7 @@ body.home-page .nav-menu {
 @media (min-width: 1024px) {
   .reserva-cta {
     margin: 100px auto; 
-    max-width: 700px;  /* un ancho un poquito más controlado */
+    max-width: 700px; 
     padding: 30px 40px; 
   }
 
@@ -790,9 +878,9 @@ body.home-page .nav-menu {
 }
 @media (min-width: 1600px) {
   .reserva-cta {
-    max-width: 900px;  /* puede ser un poquito más ancho en pantallas enormes */
-    padding: 35px 50px; /* más espacio interno */
-    margin: 80px auto;  /* más separación arriba/abajo */
+    max-width: 900px;  
+    padding: 35px 50px; 
+    margin: 80px auto;  
   }
 
   .reserva-title {
@@ -859,7 +947,7 @@ body.home-page .nav-menu {
 /* === Carrusel === */
 .carousel {
   position: relative;
-  max-width: 370px; /* ajusta según tu diseño */
+  max-width: 370px; 
   margin: 0 auto;
   overflow: hidden;
   border-radius: 8px;
@@ -906,8 +994,8 @@ body.home-page .nav-menu {
               
     max-width: 1000px;     
     margin: 0 auto;
-    padding: 80px 40px;    /* aire alrededor */
-    text-align: left;      /* texto alineado a la izquierda */
+    padding: 80px 40px;    
+    text-align: left;      
   }
   .carousel-img {
   min-width: 100%;
@@ -941,11 +1029,11 @@ body.home-page .nav-menu {
     flex: 1;
     max-width: 550px;
     display: flex;
-    justify-content: center; /* centra el carrusel */
+    justify-content: center; 
   }
 
   .carousel {
-    margin: 0; /* quita márgenes auto del modo móvil */
+    margin: 0; 
   }
 }
 @media (min-width: 1600px) {
@@ -973,7 +1061,7 @@ body.home-page .nav-menu {
   }
 
   .carousel {
-    max-width: 500px; /* carrusel muy grande */
+    max-width: 500px;
   }
 
   .carousel-img {
@@ -1001,8 +1089,6 @@ body.home-page .nav-menu {
 }
 .info-section.animate {
   animation: fadeInUpLarge 1s ease-out forwards;
-  /* opcional, si quieres que aparezca un pelín después:
-     animation-delay: 0.1s; */
 }
 
 .info-icon {
@@ -1101,11 +1187,11 @@ body.home-page .nav-menu {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 10px;              /* espacio vertical interno */
+    gap: 10px;             
     max-width: 550px;
   }
 
-  /* columna del mapa */
+  
   .info-map {
     order: 1;
     flex: 1;
@@ -1113,7 +1199,7 @@ body.home-page .nav-menu {
     justify-content: center;
   }
 
-  /* ajustes de elementos internos */
+  
   .info-icon {
     width: 100px;
     margin-bottom: 40px;

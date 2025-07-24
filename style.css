@@ -373,7 +373,7 @@ body.home-page .nav-menu {
     background-color: #000000;
   }
   .logo-home {
-    height: 380px;
+    height: 360px;
     margin-top: -100px;
   }
 }
@@ -545,7 +545,7 @@ body.home-page .nav-menu {
   }
 
  .bio-content p{
-  font-size: 20px;
+  font-size: 18px;
  }
 
   .bio-images {
@@ -559,14 +559,15 @@ body.home-page .nav-menu {
 
   .bio-img {
     width: 100%;
-    max-width: 750px;
-    height: 450px;
+    max-width: 700px;
+    height: 430px;
     object-fit: cover;
   }
 
  .bio-images .bio-img-wrap:nth-child(2) {
     display: none;
   }
+  
 
 }
 @media (min-width: 1600px) {
@@ -582,6 +583,7 @@ body.home-page .nav-menu {
  .bio-img {
     max-width: 700px;
     height: 500px;
+    margin-left: 30px;
   }
 }
 
@@ -731,10 +733,11 @@ body.home-page .nav-menu {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 100px;            
+    gap: 180px;            
     padding: 10px 40px;  
     max-width: 1200px;
     margin: 0 auto;
+    margin-bottom: 180px;
     text-align: left;
   }
 
@@ -761,6 +764,7 @@ body.home-page .nav-menu {
     order: 2;
     flex: 1;
     max-width: 550px;
+   
     display: flex;
     flex-direction: column;
     align-items: flex-start; 
@@ -773,8 +777,9 @@ body.home-page .nav-menu {
   }
 
   .carta2-content p {
-    font-size: 20px;
+    font-size: 18px;
     line-height: 1.6;
+    
     margin: 0;
   }
 
@@ -783,14 +788,26 @@ body.home-page .nav-menu {
     font-size: 20px;
     padding: 14px 30px;
     border-radius: 8px;
-    margin-right: 100px;
+    margin-right: 140px;
   }
 }
 @media (min-width: 1600px) {
+    .carta2-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 180px;            
+    padding: 10px 40px;  
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: left;
+    margin-bottom: 200px;
+  }
+
   .carta2-content {
     order: 2;
     flex: 1;
-    max-width: 750px;
+    max-width: 1200px;
     display: flex;
     flex-direction: column;
     align-items: flex-start; 
@@ -804,16 +821,23 @@ body.home-page .nav-menu {
     .carta2-img-wrap {
     order: 1;
     flex: 1;
-    max-width: 400px;
+    max-width: 800px;
     display: flex;
     justify-content: center; 
   }
     .carta2-img {
     width: 100%;
-    max-width: 100px;
-     height: 100px;
+    
+    max-width: 500px;
     object-fit: cover;
     border-radius: 8px;
+  }
+   .carta2-btn {
+    align-self: center; 
+    font-size: 20px;
+    padding: 14px 30px;
+    border-radius: 8px;
+    margin-right: 50px;
   }
 }
 
@@ -1009,8 +1033,8 @@ body.home-page .nav-menu {
   }
   .carousel-img {
   min-width: 100%;
-  height: 400px; 
-  
+  height: 410px; 
+  margin-left: 50px;
 }
 
   
@@ -1020,17 +1044,21 @@ body.home-page .nav-menu {
     display: flex;
     flex-direction: column;
     align-items: flex-start; 
-    margin-left: 30px;
+    margin-left: 50px;
+    gap: 40px;
   }
 
   .galeria-content .galeria-title {
     font-size: 43px;
     margin: 0;
+    display: flex;
+    align-items: center;
   }
 
   .galeria-content .galeria-text {
     font-size: 20px;
     line-height: 1.6;
+   
     margin: 0;
   }
 

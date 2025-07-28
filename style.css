@@ -92,7 +92,7 @@ body.home-page .header {
   backdrop-filter: blur(4px); /* efecto cristal */
 }
 body.home-page .header.scrolled {
-  background-color: rgba(0, 0, 0, 0.55); /* negro translúcido */
+  background-color: rgba(0, 0, 0, 0.55); 
 }
 
 .header__logo img.logo-img {
@@ -208,7 +208,7 @@ body.home-page .nav-menu {
 
 
 @media (min-width: 768px) {
-  /* Cabecera con fondo semitransparente + blur */
+  
   .header {
     background-color: rgba(135, 100, 69, 0.85);
     backdrop-filter: blur(4px);
@@ -274,7 +274,7 @@ body.home-page .nav-menu {
     display: inline-block;
     border-bottom: none;
     padding: 0;
-    /* nos aseguramos de quitar fondo de los enlaces */
+   
     background: transparent !important;
   }
 
@@ -299,7 +299,7 @@ body.home-page .nav-menu {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-color: #000; /* fondo negro por defecto */
+  background-color: #000;
   overflow: hidden; 
 }
 .home::before {
@@ -329,9 +329,7 @@ body.home-page .nav-menu {
   width: 100%;
   height: 100%;
   background:
-    /* Degradado inferior */
     linear-gradient(to bottom, rgba(0,0,0,0) 80%, rgba(0,0,0,1) 100%),
-    /* Capa oscura encima de la imagen */
     linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)),
     url('img/hero-restaurante.webp') no-repeat center center;
   background-size: cover;
@@ -360,7 +358,7 @@ body.home-page .nav-menu {
   animation-delay: 0.2s;
 }
 
-/*  Pantallas medianas en adelante */
+
 @media (min-width: 768px) {
    .home-bg {
     background-size: 100% auto; 
@@ -373,12 +371,12 @@ body.home-page .nav-menu {
     background-color: #000000;
   }
   .logo-home {
-    height: 360px;
+    height: 300px;
     margin-top: -100px;
   }
 }
 
-/* ====== A partir de 1600px ====== */
+
 @media (min-width: 1600px) {
   .home-bg {
     background-size: 90% auto; 
@@ -419,7 +417,6 @@ body.home-page .nav-menu {
   display: inline-block;
 }
 
-/* Líneas doradas a los lados */
 .bio-title::before,
 .bio-title::after {
   content: '';
@@ -480,17 +477,18 @@ body.home-page .nav-menu {
   pointer-events: none;
 }
 
-/* ===== A partir de tablet/desktop ===== */
+
 @media (min-width: 768px) and (max-width: 1023px) {
   .bio-section {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
-    gap: 40px;           
+    gap: 80px;           
     padding: 80px 20px;    
     max-width: 900px;
     margin: 0 auto;
+    
   }
 
  
@@ -513,6 +511,7 @@ body.home-page .nav-menu {
     flex-direction: column;
     gap: 20px;
     align-items: center;
+    margin-top: 60px;
   }
 
   .bio-images .bio-img-wrap:nth-child(2) {
@@ -645,7 +644,7 @@ body.home-page .nav-menu {
 }
 
 .carta2-btn:hover {
-  background-color: #CA965C; /* tono más oscuro al pasar el ratón */
+  background-color: #CA965C; 
   transform: scale(1.05);
 }
 
@@ -667,18 +666,17 @@ body.home-page .nav-menu {
 }
 
 
-
-/* ===== A partir de tablet/desktop ===== */
 @media (min-width: 768px) and (max-width: 1023px) {
   .carta2-section {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    gap: 150px;              
+    gap: 170px;              
     padding: 20px 30px;   
     max-width: 900px;
     margin: 0 auto;
+    margin-bottom: 50px;
     text-align: left;
   }
 
@@ -725,6 +723,7 @@ body.home-page .nav-menu {
     border-radius: 8px;
     margin: 0;
     margin-left: 80px;
+    margin-top: 10px;
   }
 }
 
@@ -904,6 +903,7 @@ body.home-page .nav-menu {
     padding: 10px 24px;
   }
 }
+
 @media (min-width: 1600px) {
   .reserva-cta {
     max-width: 1200px;  
@@ -1018,6 +1018,56 @@ body.home-page .nav-menu {
   background-color: #EEC373;
 }
 
+@media (min-width: 768px) and (max-width: 1023px) {
+  .galeria-section {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 60px 15px;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .galeria-content {
+    flex: 1;
+    max-width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+  }
+
+  .galeria-content .galeria-title {
+    font-size: 36px;
+    margin: 0;
+  }
+
+  .galeria-content .galeria-text {
+    font-size: 18px;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .galeria-carousel-wrap {
+    flex: 1;
+    max-width: 40%;
+    display: flex;
+    justify-content: center;
+    
+  }
+
+  .carousel {
+    max-width: 40%;
+    margin: 0;
+  }
+
+  .carousel-img {
+    height: 350px;
+  }
+}
+
 @media (min-width: 1024px) {
   .galeria-section {
     display: flex;
@@ -1064,7 +1114,6 @@ body.home-page .nav-menu {
   .galeria-carousel-wrap {
     flex: 1;
     max-width: 750px;
-    
     display: flex;
     justify-content: center; 
   }
@@ -1078,7 +1127,7 @@ body.home-page .nav-menu {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1270px;     
+    max-width: 1000px;     
     margin: 0 auto;
     padding: 80px 40px;    
     text-align: left;     
@@ -1109,7 +1158,7 @@ body.home-page .nav-menu {
   }
 
   .galeria-content .galeria-text {
-    max-width: none;
+    
     font-size: 18px;
     line-height: 1.6;
     margin: 0;
@@ -1183,7 +1232,7 @@ body.home-page .nav-menu {
 
 .info-socials a {
   display: inline-block;           
-  transition: transform 0.3s ease;  /* animación suave */
+  transition: transform 0.3s ease;  
 }
 
 .info-socials a:hover {
@@ -1224,8 +1273,73 @@ body.home-page .nav-menu {
 }
 
 
+@media (min-width: 768px) and (max-width: 1023px) {
+  .info-section {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 40px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    margin-top: 70px;
+    text-align: left;
+    gap: 180px; 
+  }
+
+  .info-content {
+    order: 2;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 50%;
+  }
+
+  .info-map {
+    order: 1;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  .info-map iframe {
+    max-width: 350px;
+    height: 550px;
+    border-radius: 10px;
+  }
+
+  .info-icon {
+    width: 80px;
+    margin-left: 100px;
+    margin-top: -60px;
+  }
+
+  .info-block h3 {
+    font-size: 22px;
+  }
+
+  .info-block p {
+    font-size: 16px;
+  }
+
+  .info-socials {
+ 
+   margin-top: -40px;
+    margin-left: 0;
+  }
+
+  .info-socials a img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .info-logo {
+    display: none;
+  }
+}
+
 @media (min-width: 1024px) {
-  /* contenedor principal en dos columnas */
+  
   .info-section {
     display: flex;
     align-items: flex-start;
@@ -1452,7 +1566,7 @@ animation: slideFadeIn 1s ease-out forwards;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    gap: 40px; /* espacio entre bloques y la imagen */
+    gap: 40px; 
     max-width: 1200px;
     margin: 0 auto;
     padding: 40px 20px;
@@ -1660,7 +1774,7 @@ animation: slideFadeIn 1s ease-out forwards;
   margin-left: 5px;
 }
 
-/* Featured Items */
+
 .featured-item {
   background-color: #F4DFBA;
   padding: 20px;
@@ -1673,7 +1787,6 @@ animation: slideFadeIn 1s ease-out forwards;
   font-size: 18px;
 }
 
-/* Paella Special Section */
 .paella-note {
   background-color: #EEC373;
   color: #0F0E0E;

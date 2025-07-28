@@ -978,7 +978,10 @@ body.home-page .nav-menu {
   position: relative;
   max-width: 370px; 
   margin: 0 auto;
+  overflow-x: auto;
   overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
   border-radius: 8px;
 }
 

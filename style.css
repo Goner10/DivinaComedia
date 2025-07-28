@@ -1614,6 +1614,8 @@ animation: slideFadeIn 1s ease-out forwards;
   padding: 60px 20px;
   text-align: center;
   color: #EEC373;
+   opacity: 0;
+  animation: slideFadeIn 1.5s ease-out forwards;
 }
 
 
@@ -1657,6 +1659,9 @@ animation: slideFadeIn 1s ease-out forwards;
   position: sticky;
   top: 70px;
   z-index: 90;
+    opacity: 0;
+  animation: slideFadeIn 1s ease-out forwards;
+  animation-delay: 0.3s;
 }
 
 .category-nav::-webkit-scrollbar {
@@ -1699,6 +1704,9 @@ animation: slideFadeIn 1s ease-out forwards;
 /* ========== MENU SECTIONS ========== */
 .menu-section {
   padding: 40px 20px;
+    opacity: 0;
+  animation: slideFadeIn 1s ease-out forwards;
+  animation-delay: 0.3s;
 }
 
 .section-title {

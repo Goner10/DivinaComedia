@@ -1828,6 +1828,8 @@ animation: slideFadeIn 1s ease-out forwards;
   border-radius: 4px;
   font-size: 1rem;
   cursor: pointer;
+      opacity: 0;
+  animation: slideFadeIn 1s ease-out forwards;
 }
 
 .flag-icon {

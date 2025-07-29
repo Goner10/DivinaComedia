@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
       track.style.transform = `translateX(-${currentIndex * 100}%)`;
       indicators.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
     }
-    let autoSlide = setInterval(() => { currentIndex = (currentIndex+1)%indicators.length; updateCarousel(); }, 4000);
+    let autoSlide = setInterval(() => { currentIndex = (currentIndex+1)%indicators.length; updateCarousel(); }, 3000);
     let startX = 0, endX = 0;
     track.addEventListener('touchstart', e => { clearInterval(autoSlide); startX = e.touches[0].clientX; });
     track.addEventListener('touchmove', e => endX = e.touches[0].clientX);
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
           : (currentIndex + 1) % indicators.length;
         updateCarousel();
       }
-      autoSlide = setInterval(() => { currentIndex = (currentIndex+1)%indicators.length; updateCarousel(); }, 4000);
+      autoSlide = setInterval(() => { currentIndex = (currentIndex+1)%indicators.length; updateCarousel(); }, 3000);
     });
   }
 

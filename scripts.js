@@ -55,114 +55,101 @@ document.addEventListener('DOMContentLoaded', () => {
 
   
   // === Carrusel galería ===
- const track = document.querySelector('.carousel-track');
-  const indicators = document.querySelectorAll('.indicator');
-  let currentIndex = 0;
+const track = document.querySelector('.carousel-track');
+const indicators = document.querySelectorAll('.indicator');
+let currentIndex = 0;
 
-  if (track && indicators.length) {
-    // Event listeners para los indicadores
-    indicators.forEach((dot, i) => dot.addEventListener('click', () => {
+if (track && indicators.length) {
+  // Clic en indicadores
+  indicators.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
       currentIndex = i;
       updateCarousel();
-    }));
+    });
+  });
 
-    function updateCarousel() {
-      track.style.transform = `translateX(-${currentIndex * 100}%)`;
-      indicators.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
+  function updateCarousel() {
+    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+    indicators.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
+  }
+
+  // Auto-slide
+  let autoSlide = setInterval(() => {
+    currentIndex = (currentIndex + 1) % indicators.length;
+    updateCarousel();
+  }, 3000);
+
+  // Touch (iOS y Android friendly)
+  let startX = 0;
+  let startY = 0;
+  let endX = 0;
+  let endY = 0;
+  let isScrolling = false;
+
+  // touchstart (sin preventDefault)
+  track.addEventListener('touchstart', (e) => {
+    clearInterval(autoSlide);
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    isScrolling = false;
+  }, { passive: true });
+
+  // touchmove
+  track.addEventListener('touchmove', (e) => {
+    endX = e.touches[0].clientX;
+    endY = e.touches[0].clientY;
+
+    const diffX = Math.abs(endX - startX);
+    const diffY = Math.abs(endY - startY);
+
+    if (!isScrolling) {
+      isScrolling = diffY > diffX;
     }
 
-    // Auto-slide
-    let autoSlide = setInterval(() => { 
-      currentIndex = (currentIndex + 1) % indicators.length; 
-      updateCarousel(); 
-    }, 3000);
+    if (!isScrolling && diffX > 10) {
+      e.preventDefault(); // bloquea scroll vertical solo si desliza horizontal
+    }
+  }, { passive: false });
 
-    // Variables para el manejo de touch
-    let startX = 0;
-    let startY = 0;
-    let endX = 0;
-    let endY = 0;
-    let isScrolling = false;
-
-    // Touch events mejorados para iOS
-    track.addEventListener('touchstart', (e) => {
-      clearInterval(autoSlide);
-      startX = e.touches[0].clientX;
-      startY = e.touches[0].clientY;
-      isScrolling = false;
-      
-      // Prevenir el comportamiento por defecto en iOS
-      e.preventDefault();
-    }, { passive: false });
-
-    track.addEventListener('touchmove', (e) => {
-      if (!startX || !startY) return;
-      
-      endX = e.touches[0].clientX;
-      endY = e.touches[0].clientY;
-      
-      const diffX = Math.abs(endX - startX);
-      const diffY = Math.abs(endY - startY);
-      
-      // Determinar si es scroll vertical u horizontal
-      if (!isScrolling) {
-        isScrolling = diffY > diffX;
-      }
-      
-      // Si es movimiento horizontal, prevenir scroll vertical
-      if (diffX > diffY && diffX > 10) {
-        e.preventDefault();
-      }
-    }, { passive: false });
-
-    track.addEventListener('touchend', (e) => {
-      if (!startX || isScrolling) {
-        // Reiniciar auto-slide
-        autoSlide = setInterval(() => { 
-          currentIndex = (currentIndex + 1) % indicators.length; 
-          updateCarousel(); 
-        }, 3000);
-        return;
-      }
-
-      const diffX = endX - startX;
-      const minSwipeDistance = 50;
-
-      if (Math.abs(diffX) > minSwipeDistance) {
-        if (diffX > 0) {
-          // Swipe derecha (imagen anterior)
-          currentIndex = (currentIndex - 1 + indicators.length) % indicators.length;
-        } else {
-          // Swipe izquierda (imagen siguiente)
-          currentIndex = (currentIndex + 1) % indicators.length;
-        }
+  // touchend
+  track.addEventListener('touchend', () => {
+    if (startX === 0 || isScrolling) {
+      autoSlide = setInterval(() => {
+        currentIndex = (currentIndex + 1) % indicators.length;
         updateCarousel();
+      }, 3000);
+      return;
+    }
+
+    const diffX = endX - startX;
+    const minSwipeDistance = 50;
+
+    if (Math.abs(diffX) > minSwipeDistance) {
+      if (diffX > 0) {
+        currentIndex = (currentIndex - 1 + indicators.length) % indicators.length;
+      } else {
+        currentIndex = (currentIndex + 1) % indicators.length;
       }
+      updateCarousel();
+    }
 
-      // Reset valores
-      startX = 0;
-      startY = 0;
-      endX = 0;
-      endY = 0;
-      
-      // Reiniciar auto-slide
-      autoSlide = setInterval(() => { 
-        currentIndex = (currentIndex + 1) % indicators.length; 
-        updateCarousel(); 
-      }, 3000);
-      
-      e.preventDefault();
-    }, { passive: false });
+    startX = startY = endX = endY = 0;
 
-    // Pausar auto-slide cuando el usuario interactúa
-    track.addEventListener('mouseenter', () => clearInterval(autoSlide));
-    track.addEventListener('mouseleave', () => {
-      autoSlide = setInterval(() => { 
-        currentIndex = (currentIndex + 1) % indicators.length; 
-        updateCarousel(); 
-      }, 3000);
-    });
-  }
+    autoSlide = setInterval(() => {
+      currentIndex = (currentIndex + 1) % indicators.length;
+      updateCarousel();
+    }, 3000);
+  }, { passive: false });
+
+  // Pausa al pasar el mouse (solo desktop)
+  track.addEventListener('mouseenter', () => clearInterval(autoSlide));
+  track.addEventListener('mouseleave', () => {
+    autoSlide = setInterval(() => {
+      currentIndex = (currentIndex + 1) % indicators.length;
+      updateCarousel();
+    }, 3000);
+  });
+}
 
   // === Language toggle español/inglés ===
   const langToggleBtn = document.getElementById('lang-toggle');

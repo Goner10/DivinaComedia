@@ -51,31 +51,116 @@ document.addEventListener('DOMContentLoaded', () => {
     header.classList.toggle('scrolled', window.scrollY > 10);
   });
 
+
+
+  
   // === Carrusel galería ===
-  const track = document.querySelector('.carousel-track');
+ const track = document.querySelector('.carousel-track');
   const indicators = document.querySelectorAll('.indicator');
   let currentIndex = 0;
+
   if (track && indicators.length) {
+    // Event listeners para los indicadores
     indicators.forEach((dot, i) => dot.addEventListener('click', () => {
       currentIndex = i;
       updateCarousel();
     }));
+
     function updateCarousel() {
       track.style.transform = `translateX(-${currentIndex * 100}%)`;
       indicators.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
     }
-    let autoSlide = setInterval(() => { currentIndex = (currentIndex+1)%indicators.length; updateCarousel(); }, 3000);
-    let startX = 0, endX = 0;
-    track.addEventListener('touchstart', e => { clearInterval(autoSlide); startX = e.touches[0].clientX; });
-    track.addEventListener('touchmove', e => endX = e.touches[0].clientX);
-    track.addEventListener('touchend', () => {
-      if (Math.abs(endX - startX) > 50) {
-        currentIndex = endX > startX
-          ? (currentIndex - 1 + indicators.length) % indicators.length
-          : (currentIndex + 1) % indicators.length;
+
+    // Auto-slide
+    let autoSlide = setInterval(() => { 
+      currentIndex = (currentIndex + 1) % indicators.length; 
+      updateCarousel(); 
+    }, 3000);
+
+    // Variables para el manejo de touch
+    let startX = 0;
+    let startY = 0;
+    let endX = 0;
+    let endY = 0;
+    let isScrolling = false;
+
+    // Touch events mejorados para iOS
+    track.addEventListener('touchstart', (e) => {
+      clearInterval(autoSlide);
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+      isScrolling = false;
+      
+      // Prevenir el comportamiento por defecto en iOS
+      e.preventDefault();
+    }, { passive: false });
+
+    track.addEventListener('touchmove', (e) => {
+      if (!startX || !startY) return;
+      
+      endX = e.touches[0].clientX;
+      endY = e.touches[0].clientY;
+      
+      const diffX = Math.abs(endX - startX);
+      const diffY = Math.abs(endY - startY);
+      
+      // Determinar si es scroll vertical u horizontal
+      if (!isScrolling) {
+        isScrolling = diffY > diffX;
+      }
+      
+      // Si es movimiento horizontal, prevenir scroll vertical
+      if (diffX > diffY && diffX > 10) {
+        e.preventDefault();
+      }
+    }, { passive: false });
+
+    track.addEventListener('touchend', (e) => {
+      if (!startX || isScrolling) {
+        // Reiniciar auto-slide
+        autoSlide = setInterval(() => { 
+          currentIndex = (currentIndex + 1) % indicators.length; 
+          updateCarousel(); 
+        }, 3000);
+        return;
+      }
+
+      const diffX = endX - startX;
+      const minSwipeDistance = 50;
+
+      if (Math.abs(diffX) > minSwipeDistance) {
+        if (diffX > 0) {
+          // Swipe derecha (imagen anterior)
+          currentIndex = (currentIndex - 1 + indicators.length) % indicators.length;
+        } else {
+          // Swipe izquierda (imagen siguiente)
+          currentIndex = (currentIndex + 1) % indicators.length;
+        }
         updateCarousel();
       }
-      autoSlide = setInterval(() => { currentIndex = (currentIndex+1)%indicators.length; updateCarousel(); }, 3000);
+
+      // Reset valores
+      startX = 0;
+      startY = 0;
+      endX = 0;
+      endY = 0;
+      
+      // Reiniciar auto-slide
+      autoSlide = setInterval(() => { 
+        currentIndex = (currentIndex + 1) % indicators.length; 
+        updateCarousel(); 
+      }, 3000);
+      
+      e.preventDefault();
+    }, { passive: false });
+
+    // Pausar auto-slide cuando el usuario interactúa
+    track.addEventListener('mouseenter', () => clearInterval(autoSlide));
+    track.addEventListener('mouseleave', () => {
+      autoSlide = setInterval(() => { 
+        currentIndex = (currentIndex + 1) % indicators.length; 
+        updateCarousel(); 
+      }, 3000);
     });
   }
 

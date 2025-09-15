@@ -54,102 +54,98 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   
-  // === Carrusel galería ===
-const track = document.querySelector('.carousel-track');
-const indicators = document.querySelectorAll('.indicator');
-let currentIndex = 0;
+  // === Carrusel galería (scroll nativo + snap) ===
+  const track = document.querySelector('.carousel-track');
+  const indicators = document.querySelectorAll('.indicator');
+  const prevBtn = document.querySelector('.carousel-arrow--prev');
+  const nextBtn = document.querySelector('.carousel-arrow--next');
+  let currentIndex = 0;
 
-if (track && indicators.length) {
-  // Clic en indicadores
-  indicators.forEach((dot, i) => {
-    dot.addEventListener('click', () => {
-      currentIndex = i;
-      updateCarousel();
+  if (track && indicators.length) {
+    const getSlideWidth = () => track.clientWidth; // cada slide ocupa 100%
+    let isAnimating = false;
+    let animationTimeout;
+    let isUserInteracting = false;
+    let resumeTimeout;
+    const AUTO_INTERVAL = 3500;
+
+    const scrollToIndex = (index) => {
+      if (isAnimating) return;
+      isAnimating = true;
+      const slideWidth = getSlideWidth();
+      track.scrollTo({ left: index * slideWidth, behavior: 'smooth' });
+      updateIndicators(index);
+      clearTimeout(animationTimeout);
+      animationTimeout = setTimeout(() => { isAnimating = false; }, 420);
+    };
+
+    const updateIndicators = (activeIdx) => {
+      indicators.forEach((dot, i) => dot.classList.toggle('active', i === activeIdx));
+      currentIndex = activeIdx;
+    };
+
+    // Clic en indicadores
+    indicators.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        scrollToIndex(i);
+      });
     });
-  });
 
-  function updateCarousel() {
-    track.style.transform = `translateX(-${currentIndex * 100}%)`;
-    indicators.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
-  }
+    // Sincronizar al hacer scroll manual (incluye iOS swipe)
+    let scrollTimeout;
+    const onScroll = () => {
+      if (scrollTimeout) clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        const slideWidth = getSlideWidth();
+        const index = Math.round(track.scrollLeft / slideWidth);
+        updateIndicators(index);
+      }, 80);
+    };
+    track.addEventListener('scroll', onScroll, { passive: true });
 
-  // Auto-slide
-  let autoSlide = setInterval(() => {
-    currentIndex = (currentIndex + 1) % indicators.length;
-    updateCarousel();
-  }, 3000);
-
-  // Touch (iOS y Android friendly)
-  let startX = 0;
-  let startY = 0;
-  let endX = 0;
-  let endY = 0;
-  let isScrolling = false;
-
-  // touchstart (sin preventDefault)
-  track.addEventListener('touchstart', (e) => {
-    clearInterval(autoSlide);
-    startX = e.touches[0].clientX;
-    startY = e.touches[0].clientY;
-    isScrolling = false;
-  }, { passive: true });
-
-  // touchmove
-  track.addEventListener('touchmove', (e) => {
-    endX = e.touches[0].clientX;
-    endY = e.touches[0].clientY;
-
-    const diffX = Math.abs(endX - startX);
-    const diffY = Math.abs(endY - startY);
-
-    if (!isScrolling) {
-      isScrolling = diffY > diffX;
-    }
-
-    if (!isScrolling && diffX > 10) {
-      e.preventDefault(); // bloquea scroll vertical solo si desliza horizontal
-    }
-  }, { passive: false });
-
-  // touchend
-  track.addEventListener('touchend', () => {
-    if (startX === 0 || isScrolling) {
-      autoSlide = setInterval(() => {
-        currentIndex = (currentIndex + 1) % indicators.length;
-        updateCarousel();
-      }, 3000);
-      return;
-    }
-
-    const diffX = endX - startX;
-    const minSwipeDistance = 50;
-
-    if (Math.abs(diffX) > minSwipeDistance) {
-      if (diffX > 0) {
-        currentIndex = (currentIndex - 1 + indicators.length) % indicators.length;
-      } else {
-        currentIndex = (currentIndex + 1) % indicators.length;
+    // Auto-slide usando scroll con pausa inteligente
+    let autoSlide = setInterval(() => {
+      if (!isUserInteracting) {
+        const next = (currentIndex + 1) % indicators.length;
+        scrollToIndex(next);
       }
-      updateCarousel();
+    }, AUTO_INTERVAL);
+
+    // Pausar auto-slide en interacción táctil/ratón
+    const pause = () => { isUserInteracting = true; clearInterval(autoSlide); clearTimeout(resumeTimeout); };
+    const resume = () => {
+      clearInterval(autoSlide);
+      clearTimeout(resumeTimeout);
+      resumeTimeout = setTimeout(() => {
+        isUserInteracting = false;
+        autoSlide = setInterval(() => {
+          if (!isUserInteracting) {
+            const next = (currentIndex + 1) % indicators.length;
+            scrollToIndex(next);
+          }
+        }, AUTO_INTERVAL);
+      }, 1200);
+    };
+    track.addEventListener('touchstart', pause, { passive: true });
+    track.addEventListener('touchend', resume, { passive: true });
+    track.addEventListener('mouseenter', pause);
+    track.addEventListener('mouseleave', resume);
+
+    // Flechas (solo si existen)
+    if (prevBtn && nextBtn) {
+      prevBtn.addEventListener('click', () => {
+        const prev = (currentIndex - 1 + indicators.length) % indicators.length;
+        scrollToIndex(prev);
+      });
+      nextBtn.addEventListener('click', () => {
+        const next = (currentIndex + 1) % indicators.length;
+        scrollToIndex(next);
+      });
     }
 
-    startX = startY = endX = endY = 0;
-
-    autoSlide = setInterval(() => {
-      currentIndex = (currentIndex + 1) % indicators.length;
-      updateCarousel();
-    }, 3000);
-  }, { passive: false });
-
-  // Pausa al pasar el mouse (solo desktop)
-  track.addEventListener('mouseenter', () => clearInterval(autoSlide));
-  track.addEventListener('mouseleave', () => {
-    autoSlide = setInterval(() => {
-      currentIndex = (currentIndex + 1) % indicators.length;
-      updateCarousel();
-    }, 3000);
-  });
-}
+    // Ajuste al redimensionar
+    window.addEventListener('resize', () => scrollToIndex(currentIndex));
+  }
 
   // === Language toggle español/inglés ===
   const langToggleBtn = document.getElementById('lang-toggle');

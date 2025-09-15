@@ -1064,7 +1064,7 @@ body.home-page .nav-menu {
 .carousel-arrow--next { right: 8px; }
 .carousel-arrow:hover { background: rgba(0,0,0,0.55); }
 
-@media (min-width: 1024px) {
+@media (min-width: 1024px) and (hover: hover) and (pointer: fine) {
   .carousel-arrow { display: flex; }
 }
 

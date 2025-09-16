@@ -1952,6 +1952,11 @@ animation: slideFadeIn 1s ease-out forwards;
 }
 .footer p.design{
   font-size: 12px;
+  color: #000;
+}
+.footer1 p.design{
+  font-size: 12px;
+  color: #000;
 }
 
 .social-icons {

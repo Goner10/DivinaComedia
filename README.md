@@ -45,12 +45,12 @@ DivinaComedia/
 
 ### MÓVIL 📲
 
-<img src="img/inicio.png" alt="Galeria - Carrusel" width="600">
-<img src="img/menuDesplegado.png" alt="Galeria - Carrusel" width="600">
-<img src="img/gal.png" alt="Galeria - Carrusel" width="600">
-<img src="img/inff.png" alt="Galeria - Carrusel" width="600">
-<img src="img/mapi.png" alt="Galeria - Carrusel" width="600">
-<img src="img/cartt.png" alt="Galeria - Carrusel" width="600">
+<img src="img/inicio.png" alt="Galeria - Carrusel" width="400">
+<img src="img/menuDesplegado.png" alt="Galeria - Carrusel" width="400">
+<img src="img/gal.png" alt="Galeria - Carrusel" width="400">
+<img src="img/inff.png" alt="Galeria - Carrusel" width="400">
+<img src="img/mapi.png" alt="Galeria - Carrusel" width="400">
+<img src="img/cartt.png" alt="Galeria - Carrusel" width="400">
 
 ## Uso en local
 
@@ -89,28 +89,5 @@ Propiedad del restaurante La Divina Comedia. Uso sujeto a autorizacion.
 
 ## Capturas (placeholders)
 
-Inserta tus imagenes en la carpeta `img/` y enlazalas asi:
-
-```markdown
-![Home - Hero](img/hero-restaurante.webp "Home - Hero")
-![Galeria - Carrusel](img/terraza.webp "Galeria - Carrusel")
-![Carta - Pizzas](img/pizza3.webp "Carta - Pizzas")
-![Reservas](img/terraza_noche.webp "Reservas")
-```
-
-Si prefieres controlar el tamaño, puedes usar etiquetas HTML en el README:
 
 
-
-Tambien puedes organizarlas en una cuadricula simple usando HTML:
-
-```html
-<p align="center">
-  <img src="img/hero-restaurante.webp" alt="Home" width="420">
-  <img src="img/terraza.webp" alt="Galeria" width="420">
-</p>
-<p align="center">
-  <img src="img/pizza3.webp" alt="Carta" width="420">
-  <img src="img/terraza_noche.webp" alt="Reservas" width="420">
-</p>
-```

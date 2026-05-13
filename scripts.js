@@ -182,5 +182,13 @@ const observer = new IntersectionObserver((entries, obs) => {
 });
 sectionsToAnimate.forEach(section => observer.observe(section));
 
+//footer
+document.getElementById("current-year").textContent = new Date().getFullYear();
+
+const yearSpan = document.getElementById("current-year");
+
+if (yearSpan) {
+  yearSpan.textContent = new Date().getFullYear();
+}
 
 }); 
